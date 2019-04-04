@@ -1,0 +1,48 @@
+
+@import '../../sharedStyles/sharedConsts.scss';
+
+.btn {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  border-radius: 8px;
+  font-family: $FONT_PRIMARY;
+  letter-spacing: 1.1px;
+
+}
+
+.btnDisabled {
+  background-color: #f1f2f6;
+  color: #8395a7;
+    
+}
+
+.btnActivePrimary {
+  background-color: #00bcd4;
+  color: #ffffff;
+  animation: activate 1s linear ;
+  cursor: pointer;
+}
+
+.btnActiveSecondary {
+  background-color: #ff4757;
+  color: #ffffff;
+  animation: activate 1s linear;
+  cursor: pointer;
+}
+
+.loding {
+  color: #ffffff
+}
+
+
+@keyframes activate {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    transform: 1;
+  }
+}

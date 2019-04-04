@@ -1,0 +1,121 @@
+@import '../../sharedStyles/sharedConsts.scss' ;
+
+
+.mobileMenu {
+  display: flex;
+  justify-content: space-evenly;
+  width: 50px;
+  cursor: pointer;
+  padding: 10px;
+  height: 50px;
+  align-items: center;
+}
+
+.mobileMenuDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 5px;
+  background-color: $PRIMARY_COLOR;
+}
+
+
+.mMenuClose {
+  height: 0;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  animation: closeMenu .2s ease;
+  display: none ;
+}
+.mMenuOpen {
+  background-color: $SECONDARY_COLOR;
+  width: 100%;
+  position: fixed;
+  opacity: 0.98;
+  top: 45px;
+  right: 0;
+  left: 0;
+  height: 200px;
+  animation: openMenu .2s ease;
+  display: block;
+
+
+  .menuItems {
+    ul {
+
+      padding: 25px;
+      li{
+        color: #ffffff;
+        margin-bottom: 25px;
+        list-style: none;
+       
+      }
+      a {
+        color: #ffffff;
+        font-family: $FONT_PARA;
+      }
+    }
+  }
+}
+
+
+.mainMenu {
+  ul {
+    display: flex;
+    align-items: center;
+    li{
+      display: inline;
+      margin-left: 16px;
+      color: $TEXT;
+      list-style: none;
+      
+      .proPic {
+        width: 25px;
+        height: 25px;
+        border-radius: 20px;
+        cursor: pointer;
+        animation: activate 1.2s ease;
+      }
+    }
+    a {
+      color: $TEXT;
+      font-family: $FONT_PRIMARY;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+  }
+}
+
+
+@keyframes closeMenu {
+  0% {
+    height: 200px;
+  }
+  100% {
+    height: 1000px;
+  }
+}
+
+
+@keyframes openMenu {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 200px;
+  }
+}
+
+
+@keyframes activate {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    transform: 1;
+  }
+}
+
+

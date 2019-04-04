@@ -1,0 +1,35 @@
+.container {
+  padding: 7px 14px;
+  background-color: #ED4C67;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 5px;
+  font-family: 'saria bold';
+}
+
+.selected {
+  background-color: #ff4757;
+  animation: active 0.3s ease-in ;
+}
+
+.unselected {
+  background-color: #ced6e0;
+}
+
+
+@keyframes active {
+  0% {
+    // transform: translateY(10%);
+    opacity: 0.5;
+    background-color:#ced6e0;
+  }
+  100% {
+    // transform: translateY(0);
+    opacity: 1;
+    background-color:#ff4757;
+  }
+}

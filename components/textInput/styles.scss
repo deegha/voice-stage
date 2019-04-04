@@ -1,0 +1,52 @@
+
+@import '../../sharedStyles//sharedConsts.scss';
+
+.inputContainer {
+  border: 1px solid #00bcd4;
+  border-radius: 7px;
+  padding: 10px;
+  
+  input {
+    width: 100%;
+    border: none;
+    color: #000;
+    font-size: 14px;
+    font-family: $FONT_PRIMARY;
+  }
+
+  textarea {
+    width: 100%;
+    resize: none;
+    height: 150px;
+    border: none;
+
+    &:focus{
+      outline: none;
+    } 
+  }
+
+  input:focus{
+    outline: none;
+  } 
+}
+
+.errorConatainer {
+  font-size: 10px;
+  color: #d63031;
+  font-family: $FONT_SECONDARY;
+  padding: 2px 5px;
+  height: 10px;
+  span {
+    animation: activate .6s linear ;
+  }
+}
+
+
+@keyframes activate {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    transform: 1;
+  }
+}

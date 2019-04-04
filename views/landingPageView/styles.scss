@@ -1,0 +1,12 @@
+.container {
+  color: red;
+  .wrapper {
+    display: flex;
+    justify-content: center;
+
+    .wrapperInner {
+      max-width: 1000px;
+      width: 70%;
+    }
+  }
+}

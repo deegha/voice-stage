@@ -1,0 +1,53 @@
+/**
+ * Created by Deegha on 19/03/2019
+ */
+ 
+body {
+  margin: 0;
+}
+.body {
+  font-family: 'Roboto', sans-serif;
+  
+  margin: 0;
+}
+
+
+
+
+@font-face {
+  font-family: "Lora bold";
+  src: url("/static/fonts/Lora-Bold.ttf")
+}
+
+@font-face {
+  font-family: "Lora regular";
+  src: url("/static/fonts/Lora-Regular.ttf")
+}
+
+
+@font-face {
+  font-family: "Montserrat Black";
+  src: url("/static/fonts/Montserrat-Black.ttf")
+}
+
+@font-face {
+  font-family: "Montserrat Bold";
+  src: url("/static/fonts/Montserrat-Bold.ttf")
+}
+
+@font-face {
+  font-family: "Montserrat regular";
+  src: url("/static/fonts/Montserrat-Medium.ttf")
+}
+
+@font-face {
+  font-family: "Montserrat light";
+  src: url("/static/fonts/Montserrat-Light.ttf")
+}
+
+
+@font-face {
+  font-family: "Montserrat thin";
+  src: url("/static/fonts/Montserrat-Thin.ttf")
+}
+

@@ -1,0 +1,74 @@
+
+@import '../../sharedStyles/sharedConsts.scss';
+
+.container {
+  background-color: $WHITE;
+  padding: 20px;
+  margin: 5px;
+  box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.08);
+  .containerDetails {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .imageWrapper {
+      width: 6%;
+      
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2px;
+      
+      .proImage {
+        width: 40px;
+        height: 40px;
+        overflow: hidden;
+        border-radius: 50%;
+        box-shadow: 0 2px 16px 0 #00000033;
+      }
+    }
+    .detailWrapper {
+      width: 90%;
+      h1 {
+        margin-block-start: 0;
+        font-family: $FONT_PRIMARY;
+        letter-spacing: 1px;
+        font-weight: 100;
+        font-size: 25px;
+        color: #000;
+        cursor: pointer;
+      }
+      p {
+        font-family: $FONT_PARA;
+        color: #636e72;
+        line-height: 1.5;
+        letter-spacing: 1px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      .iconArea {
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 30px;
+        .icon {
+          display: flex;
+          align-items: center;
+          width: 40px;
+          justify-content: flex-start;
+          margin-right: 20px;
+          cursor: pointer;
+
+          .amount {
+            margin-left: 5px;
+            font-size: 10px;
+            color: #636e72;
+            font-family: $FONT_PRIMARY;
+          }
+        }
+
+      }
+      
+    }
+  }
+}

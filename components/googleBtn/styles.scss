@@ -1,0 +1,14 @@
+
+@import '../../sharedStyles/sharedConsts.scss';
+
+.google {
+  color: #ffffff;
+  background-color: #DB4437;
+  border-radius: 8px;
+  padding: 14px;
+  width: 273px;
+  font-size: 14px;
+  font-family: $FONT_PRIMARY;
+  text-align: center; 
+  cursor: pointer;
+}

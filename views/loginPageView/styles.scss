@@ -1,0 +1,53 @@
+
+@import '../../sharedStyles/sharedConsts.scss';
+
+.container {
+  padding: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+
+  .imageSlider {
+    width: 35%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-top: 50px;
+  } 
+  .form {
+    width: 35%;
+    padding-top: 50px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    .title {
+      font-family: $FONT_PRIMARY, cursive;
+      text-align: center;
+      color: #00bcd4;
+    }
+    .formController {
+      width: 300px;
+      margin: 10px 0;
+    }
+    .fb {
+      color: #ffffff;
+      background-color: #29487d;
+      border-radius: 8px;
+      padding: 14px;
+      width: 273px;
+      font-size: 14px;
+      font-family:  $FONT_PRIMARY;
+      cursor: pointer;
+    }
+    .seperator {
+      color: $PRIMARY_COLOR;
+      width: 300px;
+      opacity: 0.5;
+      margin: 20px 0;
+      justify-content: flex-start;
+      font-family:  $FONT_PRIMARY;
+      text-align: center;
+    }
+  }
+}

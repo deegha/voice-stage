@@ -1,0 +1,70 @@
+/**
+ * Created by Deegha on 19/03/2019
+ */
+ 
+@import '../../sharedStyles/sharedConsts.scss' ;
+ 
+.space {
+  height: 60px;
+}
+.container {
+  height: 20px;
+  background-color: #fff;
+  z-index: 4;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.08);
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 20px 0;
+
+  .wrapper {
+
+    display: flex;
+    width: 70%;
+    align-items: center;
+    justify-content: space-between;
+
+    .headerLeft {
+      padding: 20px;
+      .siteName {
+        font-size: 25px;
+        font-family: $FONT_PRIMARY;
+        margin: 0;
+        color: $PRIMARY_COLOR;
+        font-weight: 100;
+      }
+      .logo {
+        width: 25px;
+        height: 25px;
+      }
+      a {
+        text-decoration: none;
+        color: #00bcd4;
+        display: flex;
+        align-items: center;
+      }
+      .tagline {
+        font-size: 12px;
+        letter-spacing: 1px;
+        margin: 0;
+        color: #000;
+      }
+    }
+  
+    .headerRight {
+      padding: 20px;
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+  
+  
+
+  
+}

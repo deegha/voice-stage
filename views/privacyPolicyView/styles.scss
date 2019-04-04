@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  justify-content: center;
+
+  .wrapper {
+    margin-top: 100px;
+    max-width: 900px;
+
+    h1 {
+      color: #00bcd4;
+      color: #00bcd4;
+      font-family: 'inter regular';
+    }
+
+    h2 {
+      color: #2d3436;
+      font-family: 'inter regular';
+      font-weight: 100;
+    }
+
+    p {
+      color: #636e72;
+      font-family: 'inter regular';
+      letter-spacing: 1px;
+      font-size: 15px;
+    }
+  }
+}
