@@ -1,12 +1,135 @@
+
+@import '../../sharedStyles//sharedConsts.scss';
+
 .container {
-  color: red;
   .wrapper {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items:center;
+
+    .createFormOuter {
+      margin: 40px 0;
+      width: 69%;
+      max-width: 1000px;
+
+      .secondForm {
+        width: 100%;
+        background-color: #f1f2f6;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 14px 0 10px 0;
+        padding: 20px 0;
+        animation: appear .1s ease-out ;
+        animation: activate .2s ease-out ;
+
+        .actionsArea {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+        }
+
+        textarea {
+          animation: appear .1s ease-out;
+          height: 60px;
+          width: 95%;
+          border-radius: 10px;
+          border: none;
+          padding: 10px;
+          font-size: 15px;
+          font-family: $FONT_PRIMARY;
+          resize: none;
+          overflow: hidden;
+          &:focus {
+            outline: none;
+          }
+        }
+  
+      }
+
+      .createFeedConainer {
+        background-color: #f1f2f6;
+        padding: 10px;
+        
+  
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+  
+        .buttonArea {
+          width: 20%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+  
+          .buttonCreate {
+            background-color: #ED4C67;
+            color: #fff;
+            font-weight: 800;
+            font-size: 12px;
+            padding: 10px;
+            border-radius: 2px;
+            font-family: $FONT_PRIMARY; 
+            letter-spacing: 1px;
+            cursor: pointer;
+          }
+        }
+  
+        textarea {
+          width: 80%;
+          border-radius: 10px;
+          border: none;
+          padding: 10px;
+          font-size: 15px;
+          font-family: $FONT_PRIMARY;
+          resize: none;
+          overflow: hidden;
+          &:focus {
+            outline: none;
+          
+          }
+        }
+  
+      }
+    }
+
+    
 
     .wrapperInner {
       max-width: 1000px;
       width: 70%;
     }
+  }
+}
+
+.maxCharactorWarning {
+  color: #e84118;
+  animation: activate .8s linear ;
+  margin: 8px 25px;
+  font-size: 10px;
+  font-weight: 800;
+  font-family: $FONT_SECONDARY;
+}
+
+
+
+@keyframes activate {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    transform: 1;
+  }
+}
+
+@keyframes appear {
+  0% {
+    height: 0;
+  }
+
+  100% {
+    height: 40px;
   }
 }

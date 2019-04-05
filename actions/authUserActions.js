@@ -1,5 +1,5 @@
 import { userObj } from '../modals/userModal'
-import { createUser } from '../services/backendClient'  
+import { createUser, checkUserExcists } from '../services/backendClient'  
 export const AUTHENTICATE = 'AUTHENTICATE'
 export const UNAUTHENTICATE = 'UNAUTHENTICATE'
 
@@ -36,9 +36,15 @@ export const signUp = (user, provider) => async (dispatch) => {
   userObj.providerId = user.providerId
 
   try {
-    const createdUser = await createUser(userObj)
-    dispatch(login(createdUser))
+    const userExcist = await checkUserExcists(user.email)
+    if(!userExcist) {
+      const createdUser = await createUser(userObj)
+      dispatch(login(createdUser))
+    }else {
+      dispatch(login(userExcist))
+    }
   }catch(err) {
-    dispatch(signUpFail(error))
+    console.log(err, "Error in authUser")
+    dispatch(signUpFail(err))
   }
 } 
