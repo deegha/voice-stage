@@ -31,7 +31,7 @@ export class CreateFeedForm extends React.Component {
   }
 
   handleTextChange = (e) => {
-    if(e.target.value.length > 300) {
+    if(e.target.value.length > 400) {
       this.setState({textMaxCharactorLenght: true})
     }else {
       this.setState({text: e.target.value, textMaxCharactorLenght: false})
@@ -53,14 +53,20 @@ export class CreateFeedForm extends React.Component {
             value={title}
             onChange={this.handleTitleChange}
             style={{height: textAreaHeight}} placeholder={'Stage your voice. . .'} />
-          {step === 1 && (
-            <div className={css.buttonArea} onClick={this.startDiscussion}>
-              <div className={css.buttonCreate}>Start discussion</div>
-            </div>
-          )}
+         
+          <div className={css.buttonArea} onClick={this.startDiscussion}>
+            <div className={title === ''?css.buttonCreateDis:css.buttonCreate}>
+            {title === ''?'Start typing':'Start discussion'}</div>
+          </div>
+          
           
         </div>
-        {step === 2 && (
+
+        <div>
+
+        </div>
+
+        {maxCharactorLenght && (
           <div className={css.secondForm}>
             <textarea 
               value={text}
@@ -70,10 +76,6 @@ export class CreateFeedForm extends React.Component {
               <div></div>
             </div>
           </div>
-        )}
-
-        {maxCharactorLenght && (
-          <div className={css.maxCharactorWarning}>You have reached the max charactor length</div>
         )}
       </div>
     )
