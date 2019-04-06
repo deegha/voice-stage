@@ -9,7 +9,10 @@ export class LandingPageView extends React.Component {
   
 
   render () {
-    const {feeds} = this.props
+    const { feeds, auth, createFeed } = this.props
+
+    console.log(feeds)
+
     return (
       <div className={css.container}>
         <Header
@@ -19,7 +22,7 @@ export class LandingPageView extends React.Component {
           description={APP_DESCRIPTION} />
         <div className={css.wrapper}>
           
-            <CreateFeedForm />
+            <CreateFeedForm auth={auth} createFeed={createFeed}/>
 
           <div className={css.wrapperInner}>
             {feeds.map(feed => <Feed key={feed.id} feed={feed} />)}

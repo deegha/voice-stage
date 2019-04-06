@@ -4,15 +4,27 @@
 .container {
   background-color: $WHITE;
   padding: 20px;
-  margin: 5px;
+  margin: 15px 0;
+  border-radius: 10px;
   box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.08);
+
+  .containerMedia {
+    max-width: 200px;
+    
+    img {
+      width: 100%;
+      box-shadow: 0 2px 16px 0 #00000033;
+    margin-bottom: 20px;
+    }
+  }
+
   .containerDetails {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
 
     .imageWrapper {
-      width: 6%;
+   
       
       display: flex;
       justify-content: center;
@@ -20,15 +32,27 @@
       padding: 2px;
       
       .proImage {
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
         overflow: hidden;
         border-radius: 50%;
         box-shadow: 0 2px 16px 0 #00000033;
       }
     }
     .detailWrapper {
-      width: 90%;
+      width: 95%;
+
+      .tags {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        
+
+        .tag {
+          max-width: 100px;
+        }
+      }
+
       h1 {
         margin-block-start: 0;
         font-family: $FONT_PRIMARY;

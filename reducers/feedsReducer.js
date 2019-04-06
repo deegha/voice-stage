@@ -2,6 +2,7 @@ import * as Actions from '../actions/feedsActions'
 
 const initialState = {
   loading: false,
+  creating: false,
   feeds: [],
   error: false,
   errorMessage: ''
@@ -28,7 +29,23 @@ export const feedsReducer = (state=initialState, action) => {
         loading: false,
         error: false,
         errorMessage: '',
-        feeds: action.feeds
+        feeds: action.feeds.reverse()
+      }
+    case Actions.CREAET_FEED_REQUEST:
+      return {
+        ...state,
+        creating: true,
+       
+      }
+    case Actions.ADD_FEED_TO_STATE:
+      return {
+        ...state,
+        feeds: [action.feed, ...state.feeds]
+      }
+    case Actions.CREAET_FEED_SUCCESS:
+      return {
+        ...state,
+        creating: false
       }
     default:
       return state

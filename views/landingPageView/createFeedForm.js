@@ -1,5 +1,12 @@
 import css  from './styles.scss'
+import { FiImage } from 'react-icons/fi'
 
+import {tags} from '../../components/tags'
+import { FilterTab } from '../../components'
+import { CLOUDINARY_UPLOAD_PRESET, CLOUDINARY_UPLOAD_URL }  from '../../config/config'
+
+import { makeid } from '../../services/helper'
+import request from 'superagent'
 export class CreateFeedForm extends React.Component {
 
   state = {
@@ -7,7 +14,13 @@ export class CreateFeedForm extends React.Component {
     text: '',
     textAreaHeight: 20,
     maxCharactorLenght: false,
-    step: 1
+    openText: false,
+    step: 1,
+    selectedTags: [],
+    media: {
+      url: '',
+      type: null
+    }
   }
 
   changeHeight = () => {
@@ -24,7 +37,7 @@ export class CreateFeedForm extends React.Component {
 
   handleTitleChange = (e) => {
     if(e.target.value.length > 100) {
-      this.setState({maxCharactorLenght: true})
+      this.setState({maxCharactorLenght: true, openText: true})
     }else {
       this.setState({title: e.target.value, maxCharactorLenght: false}, this.changeHeight())
     } 
@@ -38,40 +51,157 @@ export class CreateFeedForm extends React.Component {
     } 
   }
 
-  startDiscussion = () => {
-    this.setState({step: 2})
+
+  handleImageUpload = async (file) => {
+    try {
+    this.setState({imageUloading: true})
+    let response = await request
+    .post(CLOUDINARY_UPLOAD_URL)
+    .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+    .field('file', file)
+
+    if(response.body){
+      this.setState({imageUloading: false})
+      return response.body.secure_url
+    }else {
+      return ""
+    }
+    }catch(err) {
+      console.log(err)
+    }
+  }
+
+  startDiscussion = async () => {
+    const { auth:{user}, createFeed } = this.props
+    const { title, text,selectedTags, media } = this.state
+
+    const feed = {
+      id : makeid(10),
+      auther: {
+        id: user.id,
+        photoURL: user.photoURL,
+        displayName: user.displayName
+      },
+      media: {
+        type: media.type !== null? media.type: null,
+        url: media.url !== ''?await this.handleImageUpload(media.file): ''
+      },
+      text: text,
+      title: title,
+      tags: selectedTags
+    }
+
+    createFeed(feed)
+    
+    this.setState({
+      title: '',
+      text: '',
+      textAreaHeight: 20,
+      maxCharactorLenght: false,
+      step: 1,
+      selectedTags: [],
+      media: {
+        url: '',
+        type: null,
+        file: ''
+      }
+    })
+
   } 
+
+  selectTag = (tag)=> () => {
+    const { selectedTags } = this.state
+    const index = selectedTags.indexOf(tag)
+
+    if(index != -1) {
+      const tempTags = selectedTags
+      tempTags.splice(index, 1)
+      this.setState({selectedTags: tempTags})
+    }else {
+
+      if(selectedTags.length < 4) {
+        this.setState(preState => ({
+          selectedTags: [...preState.selectedTags, tag]
+        }))
+      }
+    }
+  }
+
+
+  handleFileChange = (event) => {
+    console.log(event.target.files)
+    const file = event.target.files[0]
+    const url = event.target.files.length > 0 ?URL.createObjectURL(event.target.files[0]): ""
+    this.setState(preState=> ({
+      ...preState,
+      media: {
+        url,
+        type: 1,
+        file
+      }
+    }))
+  }
 
   render() {
 
-    const { textAreaHeight, maxCharactorLenght, title, step, text }  = this.state
+    const { openText, textAreaHeight, maxCharactorLenght, title, text, selectedTags, media }  = this.state
+
+    const hasContent = (title.length > 0 || media.url !== '')
+
+    const outerCls = hasContent ?[css.createFormOuter,css.boxBorder].join(' '): css.createFormOuter
+
     return (
-      <div className={css.createFormOuter}>
+      <div className={outerCls}>
      
         <div className={css.createFeedConainer}>
+          <div className={css.textAreaWrapper}>
           <textarea 
             value={title}
             onChange={this.handleTitleChange}
             style={{height: textAreaHeight}} placeholder={'Stage your voice. . .'} />
-         
-          <div className={css.buttonArea} onClick={this.startDiscussion}>
-            <div className={title === ''?css.buttonCreateDis:css.buttonCreate}>
-            {title === ''?'Start typing':'Start discussion'}</div>
+
+           <div className={css.option}>
+            <input type="file" onChange={this.handleFileChange} />
+            <FiImage style={{color: '#636e72', fontSize: '20px'}} />
           </div>
-          
-          
+          </div>
+          <div className={css.buttonArea} onClick={this.startDiscussion}>
+            <div className={!hasContent?css.buttonCreateDis:css.buttonCreate}>
+            {!hasContent?'Start typing':'Start discussion'}</div>
+          </div>
         </div>
 
-        <div>
+        <div className={css.optionsBar}>
+          {media.url !== '' && media.type === 1 && (
+            <div className={css.feedImage}>
+              <img src={media.url} />
+            </div>
+          )}
+          {hasContent && (
+            <div className={css.optionsBarTags}>
+            <div>#addATag:</div>
+            {tags.map( tag => (
+              <FilterTab 
+                key={tag.tagKey}
+                callback={this.selectTag}
+                selected={selectedTags.indexOf(tag.tagKey) != -1? true: false}
+                prop={tag.tagKey}
+                title={tag.tag} />
+            ) )}
+            </div>
+          ) } 
+         
+          <div>
 
+          </div>
         </div>
 
-        {maxCharactorLenght && (
+        {openText && (
           <div className={css.secondForm}>
             <textarea 
               value={text}
               onChange={this.handleTextChange}
-              placeholder={'Say more about it'} />
+              placeholder={'Say more about it here. . .'} />
             <div className={css.actionsArea}>
               <div></div>
             </div>
@@ -81,3 +211,4 @@ export class CreateFeedForm extends React.Component {
     )
   }
 }
+

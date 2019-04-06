@@ -70,3 +70,17 @@ export const checkUserExcists = async(email) => {
 
   return response.length > 0 ? response[0] : false
 }
+
+export const createNewFeed = async(feed) => {
+  try {
+    const firebase = await Fire()
+    const db = firebase.firestore()
+    const response = await db.collection("feeds").doc(feed.id).set(feed)
+
+    return response
+  }catch(err) {
+    console.log(err)
+
+    throw new Error(err)
+  }
+}

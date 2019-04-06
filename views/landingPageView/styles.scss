@@ -7,12 +7,13 @@
     justify-content: flex-start;
     flex-direction: column;
     align-items:center;
+    
 
     .createFormOuter {
-      margin: 40px 0;
+      margin: 40px 0 10px 0;
       width: 69%;
       max-width: 1000px;
-
+     
       .secondForm {
         width: 100%;
         background-color: #f1f2f6;
@@ -20,7 +21,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin: 14px 0 10px 0;
+        margin: 14px 0 0 0;
         padding: 20px 0;
         animation: appear .1s ease-out ;
         animation: activate .2s ease-out ;
@@ -49,10 +50,41 @@
   
       }
 
+      .optionsBar {
+        width: 90%;
+        margin: 10px 5px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column; 
+        
+        .feedImage {
+          width: 200px;
+          animation: activate .6s ease-out ;
+          img {
+            width: 100%;
+          }
+        } 
+
+        .optionsBarTags {
+          animation: activate .8s ease-in-out ;
+          margin: 10px 0;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+            flex-wrap: wrap;
+          }
+
+          font-size: 10px;
+          font-family: $FONT_SECONDARY; 
+          color: $PRIMARY_COLOR;
+      } 
+
       .createFeedConainer {
         background-color: #f1f2f6;
         padding: 10px;
         
+       
   
         display: flex;
         justify-content: space-between;
@@ -89,21 +121,31 @@
             letter-spacing: 1px;
           }
         }
-  
-        textarea {
-          width: 80%;
+        
+        .textAreaWrapper {
           border-radius: 10px;
-          border: none;
           padding: 10px;
-          font-size: 15px;
-          font-family: $FONT_PRIMARY;
-          resize: none;
-          overflow: hidden;
-          &:focus {
-            outline: none;
-          
+          width: 80%;
+          background-color: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          textarea {
+            width: 90%;
+           
+            border: none;
+            
+            font-size: 15px;
+            font-family: $FONT_PRIMARY;
+            resize: none;
+            overflow: hidden;
+            &:focus {
+              outline: none;
+            
+            }
           }
         }
+        
   
       }
     }
@@ -126,6 +168,24 @@
   font-family: $FONT_SECONDARY;
 }
 
+.boxBorder {
+  // animation: appear .8s linear ;
+  box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.08);
+}
+
+.option {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  cursor: pointer;
+
+  input {
+    width: 40px;
+    opacity: 0;
+    cursor: pointer;
+  }
+}
 
 
 @keyframes activate {
