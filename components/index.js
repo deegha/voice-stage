@@ -11,6 +11,8 @@ import { Button } from './button/button'
 import { Feed } from './feedItem/feed'
 import { FacebookBtn } from './facebookBtn/facebookBtn'
 import { GoogleBtn } from './googleBtn/googleBtn'
+import { Modal } from './modal/modal'
+import { CommentBox } from './commentBox/commentBox'
 
 export {
   Head,
@@ -21,5 +23,7 @@ export {
   Nav,
   Feed,
   FacebookBtn,
-  GoogleBtn
+  GoogleBtn,
+  Modal,
+  CommentBox
 }

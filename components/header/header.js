@@ -3,12 +3,14 @@
  */
 import { connect } from 'react-redux'
 import { setWindowDimentions } from '../../actions/windowActions'
-
+import { signUp } from '../../actions/authUserActions'
+import { userObj } from '../../modals/userModal'
 import css from './styles.scss'
 import Link from 'next/link'
 import propTypes from 'prop-types'
 import {APP_NAME} from '../../config/config'
 import { Head, Nav } from '../'
+import {Fire} from '../../services/firebase'
 
 const logo = '../../static/logo.png'
 
@@ -17,6 +19,22 @@ class Header extends React.PureComponent {
   componentDidMount() {
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
+
+    Fire().then(firebase => {
+      firebase.auth().onAuthStateChanged(user => {
+   
+
+        userObj.displayName= user.displayName
+        userObj.email= user.email
+        userObj.emailVerified = user.emailVerified
+        userObj.phoneNumber = user.phoneNumber
+        userObj.photoURL = user.photoURL
+        userObj.providerId = user.providerId
+
+        this.props.login(userObj)
+      })
+    })
+    
   }
   
   componentWillUnmount() {
@@ -44,15 +62,11 @@ class Header extends React.PureComponent {
             <div className={css.headerLeft}>
               <Link prefetch href="/">
                 <a>
-                  {/* <img src={logo} className={css.logo}/> */}
                   <h1 className={css.siteName}>
                     {APP_NAME}
                   </h1>
                 </a>
               </Link>
-              {/* <h3 className={css.tagline}>
-                Creat a space for your voice
-              </h3> */}
             </div>
             <div className={css.headerRight}>
               <Nav isMobile={isMobile} auth={auth} />
@@ -80,7 +94,8 @@ const mapStateToProps = ({window, auth}) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  setDim: (dim) => dispatch(setWindowDimentions(dim))
+  setDim: (dim) => dispatch(setWindowDimentions(dim)),
+  login:(user) => dispatch(signUp(user))
 })
 
 

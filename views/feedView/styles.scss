@@ -1,0 +1,106 @@
+@import '../../sharedStyles/sharedConsts.scss';
+
+.container {
+  margin-bottom: 60px;
+  .containerInner {
+    display: flex;
+    justify-content: center;
+
+    .wrapper {
+      width: 70%;
+      max-width: 1000px;
+      margin-top: 30px;
+
+      .featuredImage {
+        width: 70%;
+        img {
+          width: 100%;
+        }
+      }
+
+      h1 {
+        font-family: $FONT_PRIMARY;
+        font-weight: 100;
+        color: #353b48;
+        margin-bottom: 5px;
+        &:first-letter {
+          text-transform: uppercase;
+        }
+      }
+
+      .tagContainer {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+    }
+  }
+}
+
+
+.writeComment {
+  margin-top: 40px;
+  width: 67%;
+  .replyBtn {
+    animation: activate .6s ease-out ;
+    background-color: #ED4C67;
+    color: #fff;
+    font-weight: 800;
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 2px;
+    font-family: $FONT_PRIMARY; 
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-left: 20px;
+  }
+
+  background-color: #f1f2f6;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  
+  .textAreaWrapper {
+    border-radius: 10px;
+    padding: 5px 10px;
+    width: 90%;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .optionsArea {
+      width: 4%;
+      display: flex;
+      align-items: center;
+      input {
+        position: relative;
+        top: -5px;
+        width: 33px;
+        opacity: 0;
+        width:2%;
+      }
+    }
+    
+    textarea {
+      width: 90%;
+      border: none;
+      font-size: 12px;
+      font-family: $FONT_PRIMARY;
+      resize: none;
+      overflow: hidden;
+      &:focus {
+        outline: none;
+      
+      }
+    }
+  }
+}
+
+.commentImage {
+  width: 200px;
+  img {
+    width: 100%;
+  }
+}

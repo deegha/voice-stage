@@ -2,11 +2,11 @@ import css  from './styles.scss'
 import { FiImage } from 'react-icons/fi'
 
 import {tags} from '../../components/tags'
-import { FilterTab } from '../../components'
+import { FilterTab, Modal, GoogleBtn, FacebookBtn } from '../../components'
 import { CLOUDINARY_UPLOAD_PRESET, CLOUDINARY_UPLOAD_URL }  from '../../config/config'
 
-import { makeid } from '../../services/helper'
-import request from 'superagent'
+import { makeid, uploadImage } from '../../services/helper'
+// import request from 'superagent'
 export class CreateFeedForm extends React.Component {
 
   state = {
@@ -17,11 +17,41 @@ export class CreateFeedForm extends React.Component {
     openText: false,
     step: 1,
     selectedTags: [],
+    showLogin: false,
     media: {
       url: '',
       type: null
     }
   }
+
+  componentDidUpdate (preState) {
+    const { authenticated } = this.props.auth
+    if( authenticated && this.state.showLogin ) {
+      this.setState({showLogin: false})
+    }
+  }
+
+  setToInitialState = () => {
+    this.setState({
+      imageUloading: false,
+      title: '',
+      text: '',
+      textAreaHeight: 20,
+      maxCharactorLenght: false,
+      step: 1,
+      selectedTags: [],
+      showLogin: false,
+      media: {
+        url: '',
+        type: null,
+        file: ''
+      }
+    })
+  }
+
+  openLoginModal = () => {
+    this.setState({showLogin: true})
+  } 
 
   changeHeight = () => {
     const chars_per_row = 100;
@@ -54,26 +84,31 @@ export class CreateFeedForm extends React.Component {
 
   handleImageUpload = async (file) => {
     try {
-    this.setState({imageUloading: true})
-    let response = await request
-    .post(CLOUDINARY_UPLOAD_URL)
-    .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
-    .field('file', file)
+      this.setState({imageUloading: true})
 
-    if(response.body){
+      const url = await uploadImage(file)
+      console.log(url, "url")
       this.setState({imageUloading: false})
-      return response.body.secure_url
-    }else {
-      return ""
-    }
+      
+      return url
     }catch(err) {
-      console.log(err)
+      this.setState({imageUloading: false})
+      return ''
     }
   }
 
   startDiscussion = async () => {
-    const { auth:{user}, createFeed } = this.props
+    const { auth:{user, authenticated}, createFeed } = this.props
     const { title, text,selectedTags, media } = this.state
+
+    if(title !== '' || media.url !== '') {
+     
+    
+
+    if(!authenticated) {
+      this.openLoginModal()
+      return false
+    }
 
     const feed = {
       id : makeid(10),
@@ -92,21 +127,8 @@ export class CreateFeedForm extends React.Component {
     }
 
     createFeed(feed)
-    
-    this.setState({
-      title: '',
-      text: '',
-      textAreaHeight: 20,
-      maxCharactorLenght: false,
-      step: 1,
-      selectedTags: [],
-      media: {
-        url: '',
-        type: null,
-        file: ''
-      }
-    })
-
+    this.setToInitialState()
+  }
   } 
 
   selectTag = (tag)=> () => {
@@ -144,7 +166,7 @@ export class CreateFeedForm extends React.Component {
 
   render() {
 
-    const { openText, textAreaHeight, maxCharactorLenght, title, text, selectedTags, media }  = this.state
+    const { openText, textAreaHeight, maxCharactorLenght, title, text, selectedTags, media, showLogin,imageUloading }  = this.state
 
     const hasContent = (title.length > 0 || media.url !== '')
 
@@ -165,10 +187,15 @@ export class CreateFeedForm extends React.Component {
             <FiImage style={{color: '#636e72', fontSize: '20px'}} />
           </div>
           </div>
-          <div className={css.buttonArea} onClick={this.startDiscussion}>
+          {imageUloading? (
+            <div>Posting</div>
+          ): (
+            <div className={css.buttonArea} onClick={this.startDiscussion}>
             <div className={!hasContent?css.buttonCreateDis:css.buttonCreate}>
             {!hasContent?'Start typing':'Start discussion'}</div>
           </div>
+          )}
+         
         </div>
 
         <div className={css.optionsBar}>
@@ -207,6 +234,15 @@ export class CreateFeedForm extends React.Component {
             </div>
           </div>
         )}
+        
+        <Modal visible={showLogin}>
+          <div className={css.loginContainer}>
+            <h3>Login in to continue</h3>
+            <FacebookBtn signUp={this.props.signUp} />
+            <GoogleBtn signUp={this.props.signUp}/>
+            <div className={css.closeBtn}>Close</div>
+          </div>
+        </Modal>
       </div>
     )
   }

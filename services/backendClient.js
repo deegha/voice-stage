@@ -5,8 +5,18 @@ const fetch = require("node-fetch")
 
 import {Fire} from './firebase'
 
-// const baseUrl = "https://us-central1-like-me-65680.cloudfunctions.net/"
-// const baseUrl = "http://localhost:5000/like-me-65680/us-central1/"
+const baseUrl = "https://us-central1-forum-79e2c.cloudfunctions.net/"
+// const baseUrl = `http://localhost:5000/forum-79e2c/us-central1/`
+
+
+const POST = async (path, data) => {
+  console.log('post', baseUrl+path)
+  const result = await fetch(baseUrl+path, {
+    method: "POST",
+    body: JSON.stringify(data) 
+  })
+  return await result.json()
+}   
 
 const getRef = async (col) => {
 
@@ -84,3 +94,77 @@ export const createNewFeed = async(feed) => {
     throw new Error(err)
   }
 }
+
+export const fetchFeed = async(id) => {
+ 
+  
+  try {
+    const firebase = await Fire()
+    const db = firebase.firestore()
+    const feedRef = db.collection("feeds").doc(id)
+    const feed = await feedRef.get()
+ 
+    if (feed.exists) {
+      return feed.data()
+    } else {
+      return {} 
+    }
+
+  }catch(err) {
+    console.log(err)
+  }
+}
+
+export const createComment = async (comment) => {
+
+  try {
+    const firebase = await Fire()
+    const db = firebase.firestore()
+    const response = await db.collection("comments").doc(comment.id).set(comment)
+    return response
+  }catch(err) {
+    console.log(err)
+
+    throw new Error(err)
+  }
+} 
+
+export const replyComment = async (superparentId, commentTree) => {
+
+  try {
+    const firebase = await Fire()
+    const db = firebase.firestore()
+    const response = await db.collection("comments").doc(superparentId).set(commentTree)
+
+    console.log(response)
+    return response
+  }catch(err) {
+    console.log(err)
+
+    throw new Error(err)
+  }
+} 
+
+export const getComments = async (feedId) => {
+
+  try {
+    const firebase = await Fire()
+    const db = firebase.firestore()
+    const commentRef = db.collection("comments").where('feedId', '==', feedId)
+    const snapshot = await commentRef.get()
+
+    let response = []
+
+    snapshot.forEach(doc => {
+      response = [...response, {
+        ...doc.data(),
+        id: doc.id
+      }]
+    })
+    return response
+  }catch(err) {
+    console.log(err)
+  }
+} 
+
+export const getFeedById = (feedId) => POST('getFeedById', {"feedId": feedId}) 

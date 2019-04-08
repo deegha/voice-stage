@@ -17,10 +17,9 @@ export const Fire  = async () => {
     firebase.initializeApp(firebaseConfig)
   } catch (err) {
 
-    console.log("here")
-    if (!/already exists/.test(err.message)) {
-      console.error('Firebase initialization error : ', err.stack)
-    }
+    // if (!/already exists/.test(err.message)) {
+    //   console.error('Firebase initialization error : ', err.stack)
+    // }
   }
 
   return firebase

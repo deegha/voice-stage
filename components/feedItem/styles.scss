@@ -40,7 +40,11 @@
       }
     }
     .detailWrapper {
-      width: 95%;
+      width: 93%;
+
+      a {
+        text-decoration: none;
+      }
 
       .tags {
         display: flex;

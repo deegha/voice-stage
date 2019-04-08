@@ -9,7 +9,6 @@ export class GoogleBtn extends React.Component {
       .then(({ user }) => {
 
         this.props.signUp(user, 'google')
-        console.log(user.displayName)
       })
       .catch(err => {
         console.log(err, 'at google button')

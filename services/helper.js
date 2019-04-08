@@ -1,4 +1,8 @@
 
+import { CLOUDINARY_UPLOAD_URL, CLOUDINARY_UPLOAD_PRESET } from '../config/config'
+
+import request from 'superagent'
+
 let format = async (feeds,feed, likes, liked) => ({
   id: feed,
   location: feeds[feed].location?feeds[feed].location:null,
@@ -86,4 +90,22 @@ export const makeid = (length) => {
     text += possible.charAt(Math.floor(Math.random() * possible.length))  
 
   return text+Date.now();
+}
+
+export const uploadImage = async (file) => {
+  try{
+    let response = await request
+    .post(CLOUDINARY_UPLOAD_URL)
+    .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+    .field('file', file)
+
+    if(response.body){
+      return response.body.secure_url
+    }else {
+      return ""
+    }
+  }catch(err) {
+    console.log(err)
+    return ""
+  }
 }

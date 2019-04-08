@@ -2,6 +2,8 @@ import css from './styles.scss'
 import { IoMdShare, IoIosHeart, IoIosHeartEmpty,  } from 'react-icons/io'
 import { MdComment } from 'react-icons/md'
 import { FilterTab } from '../../components'
+import Link from 'next/link'
+
 export class Feed extends React.PureComponent {
 
   render() {
@@ -10,11 +12,7 @@ export class Feed extends React.PureComponent {
 
     return (
       <div className={css.container} key={feed.id}>
-        {feed.media.url !== '' && (
-          <div className={css.containerMedia}>
-            <img src={feed.media.url} />
-          </div>
-        )}
+       
         
         <div className={css.containerDetails}>
           <div className={css.imageWrapper} >
@@ -23,7 +21,20 @@ export class Feed extends React.PureComponent {
               backgroundRepeat: 'no-repeat'}} />
           </div>
           <div className={css.detailWrapper}>
-            <h1>{feed.title}</h1>
+            <Link href={`feed?slug=${feed.id}`}>
+              <a>
+                <h1>{feed.title}</h1>
+              </a>
+            </Link>
+            {feed.media.url !== '' && (
+              <Link href={`feed?slug=${feed.id}`}>
+                <a>
+                  <div className={css.containerMedia}>
+                    <img src={feed.media.url} />
+                  </div>
+                </a>
+              </Link>
+            )}
             {feed.tags && feed.tags.length > 0 && (
               <div className={css.tags}>
                 {feed.tags.map(tag => (
@@ -32,8 +43,15 @@ export class Feed extends React.PureComponent {
                   </div>)
                 )}
               </div>
-            )}    
-            <p>{feed.text}</p>
+            )}  
+            {feed.text !== '' && (
+              <Link href={`feed?slug=${feed.id}`}>
+                <a>  
+                  <p>{feed.text}</p>
+                </a>
+              </Link>
+            )}
+            
             <div className={css.iconArea}>
              
               <div className={css.icon}>
