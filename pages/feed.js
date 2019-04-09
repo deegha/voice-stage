@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { fetchFeed, getFeedById, createComment, getComments, replyComment } from '../services/backendClient'
+import { fetchFeed, createComment, getComments, replyComment } from '../services/backendClient'
 import FeedsView  from '../views/feedView/feedsView'
 
 class Feed extends React.Component {
@@ -7,7 +7,7 @@ class Feed extends React.Component {
   static async getInitialProps({query}) {
     const slug = query.slug
     try {
-      const feed = await getFeedById(slug)
+      const feed = await fetchFeed(slug)
      
       return {slug, feed}
     }catch(err) {
@@ -67,7 +67,7 @@ class Feed extends React.Component {
     const { feed, auth } = this.props
     const { comments } = this.state
     return (
-     <FeedsView comments={comments} reply={this.reply} feed={feed.data} auth={auth} addComment={this.addComment}/>
+     <FeedsView comments={comments} reply={this.reply} feed={feed} auth={auth} addComment={this.addComment}/>
     )
   }
 }

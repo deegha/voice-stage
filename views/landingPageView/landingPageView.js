@@ -1,5 +1,5 @@
 
-import { Header, Feed  } from '../../components'
+import {  Feed  } from '../../components'
 import { APP_NAME, APP_LOG, APP_DESCRIPTION, APP_BASE_URL } from '../../config/config'
 import css  from './styles.scss'
 
@@ -13,11 +13,11 @@ export class LandingPageView extends React.Component {
 
     return (
       <div className={css.container}>
-        <Header
+        {/* <Header
           title={APP_NAME}
           ogImage={APP_LOG}
           url={APP_BASE_URL}
-          description={APP_DESCRIPTION} />
+          description={APP_DESCRIPTION} /> */}
         <div className={css.wrapper}>
           
             <CreateFeedForm signUp={signUp} auth={auth} createFeed={createFeed}/>
