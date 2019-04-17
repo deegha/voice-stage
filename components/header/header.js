@@ -23,15 +23,19 @@ class Header extends React.PureComponent {
     Fire().then(firebase => {
       firebase.auth().onAuthStateChanged(user => {
    
+        if(user) {
+          userObj.displayName= user.displayName
+          userObj.email= user.email
+          userObj.emailVerified = user.emailVerified
+          userObj.phoneNumber = user.phoneNumber
+          userObj.photoURL = user.photoURL
+          userObj.providerId = user.providerId
 
-        userObj.displayName= user.displayName
-        userObj.email= user.email
-        userObj.emailVerified = user.emailVerified
-        userObj.phoneNumber = user.phoneNumber
-        userObj.photoURL = user.photoURL
-        userObj.providerId = user.providerId
+          this.props.login(userObj)
+        }
+     
 
-        this.props.login(userObj)
+        
       })
     })
     

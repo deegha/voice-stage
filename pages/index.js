@@ -6,9 +6,9 @@ import { signUp } from '../actions/authUserActions'
 
 class LandingPage extends React.Component {
 
-  // componentDidMount() {
-  //   this.props.getFeeds()
-  // }
+  componentDidMount() {
+    this.props.getFeeds()
+  }
 
   render() {
 

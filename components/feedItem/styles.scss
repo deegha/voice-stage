@@ -14,7 +14,7 @@
     img {
       width: 100%;
       box-shadow: 0 2px 16px 0 #00000033;
-    margin-bottom: 20px;
+      margin-bottom: 20px;
     }
   }
 
@@ -40,7 +40,7 @@
       }
     }
     .detailWrapper {
-      width: 93%;
+      width: 90%;
 
       a {
         text-decoration: none;
@@ -82,10 +82,10 @@
         .icon {
           display: flex;
           align-items: center;
-          width: 40px;
-          justify-content: flex-start;
+          justify-content: center;
           margin-right: 20px;
           cursor: pointer;
+          width: 40px;
 
           .amount {
             margin-left: 5px;

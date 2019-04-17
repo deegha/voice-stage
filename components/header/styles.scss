@@ -25,12 +25,12 @@
   .wrapper {
 
     display: flex;
-    width: 70%;
+    width: 60%;
     align-items: center;
     justify-content: space-between;
 
     .headerLeft {
-      padding: 20px;
+      padding: 20px 0;
       .siteName {
         font-size: 18px;
         font-family: $FONT_PRIMARY;
@@ -57,7 +57,7 @@
     }
   
     .headerRight {
-      padding: 20px;
+      padding: 20px 0;
       a {
         text-decoration: none;
       }

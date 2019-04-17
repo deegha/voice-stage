@@ -1,0 +1,25 @@
+@import '../../sharedStyles/sharedConsts.scss';
+
+
+
+.likeBtnContainer {
+
+  display: flex;
+  align-items: flex-start ;
+
+  .likeBtn {
+    font-size: 17px; 
+    display: flex;
+    align-items: center;
+  }
+
+  .amount {
+    margin-left: 5px;
+    font-size: 13px;
+    color: #636e72;
+    font-family: $FONT_PRIMARY;
+    display: flex;
+    align-items: center;
+  }
+}
+

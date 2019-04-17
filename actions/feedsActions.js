@@ -70,3 +70,28 @@ export const createFeed = (feed) => async (dispatch) => {
   }  
   dispatch(createFeedSuccess())
 }
+
+export const VOTE_UP = 'VOTE_UP'
+export const VOTE_DOWN = 'VOTE_DOWN'
+
+export const voteUpAction = (postID) => ( dispatch, getState ) =>  {
+
+  const state = getState()
+  const userId = state.auth.user.id
+  dispatch(({
+    type: VOTE_UP,
+    userId,
+    postID
+  }))
+}
+
+export const voteDownAction = (postID) => ( dispatch, getState ) => {
+  const state = getState()
+  const userId = state.auth.user.id
+
+  dispatch(({
+    type: VOTE_DOWN,
+    userId,
+    postID
+  }))
+}

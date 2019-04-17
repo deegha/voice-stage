@@ -11,5 +11,5 @@ export const userObj = {
   reputation: 0,
   location: '',
   age: null,
-  favTags: []
+  favTags: [],
 }

@@ -67,14 +67,14 @@ export default class FeedsView extends React.PureComponent {
   render() {
     const { feed, auth, comments, reply } = this.props
     const { commentText, textAreaHeight, media} = this.state
-    console.log(feed)
+    console.log(feed, 'feed')
     return (
       <div className={css.container}>
         <Header 
           ogImage={feed.media && feed.media.url}
           url={APP_BASE_URL}
-          description={`${feed.title} - ${APP_NAME}`}
-          title={`${feed.title} - ${APP_NAME}`} />
+          description={feed.title !==''?`${feed.title} - ${APP_NAME}`:APP_NAME}
+          title={feed.title !==''?`${feed.title} - ${APP_NAME}`:APP_NAME} />
         <div className={css.containerInner}>
           <div className={css.wrapper}>
             {feed.media && feed.media.url !== '' && (

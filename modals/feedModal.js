@@ -13,5 +13,5 @@ export const feedObj = {
   text: '',
   title: '',
   votes: 0,
-  tags: []
+  tags: [],
 }

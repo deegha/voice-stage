@@ -1,9 +1,11 @@
 import css from './styles.scss'
 import { IoMdShare, IoIosHeart, IoIosHeartEmpty,  } from 'react-icons/io'
 import { MdComment } from 'react-icons/md'
-import { FilterTab } from '../../components'
+import { FilterTab, LikeBtn } from '../../components'
+import { APP_BASE_URL } from '../../config/config'
 import Link from 'next/link'
 
+import { FacebookShareButton, TwitterShareButton, FacebookIcon, TwitterIcon, } from 'react-share'
 export class Feed extends React.PureComponent {
 
   render() {
@@ -21,11 +23,14 @@ export class Feed extends React.PureComponent {
               backgroundRepeat: 'no-repeat'}} />
           </div>
           <div className={css.detailWrapper}>
-            <Link href={`feed?slug=${feed.id}`}>
+            {feed.title && (
+              <Link href={`feed?slug=${feed.id}`}>
               <a>
                 <h1>{feed.title}</h1>
               </a>
             </Link>
+            )}
+            
             {feed.media.url !== '' && (
               <Link href={`feed?slug=${feed.id}`}>
                 <a>
@@ -55,18 +60,22 @@ export class Feed extends React.PureComponent {
             <div className={css.iconArea}>
              
               <div className={css.icon}>
-                <IoIosHeart style={{color:'#d63031'}}/>
-                <span className={css.amount}>250</span>
+                <LikeBtn likeCount={100} liked={false} feedId={feed.id} />
               </div>
               <div className={css.icon}>
                 <MdComment  style={{color:'#0984e3'}}  />
                 <span className={css.amount}>123</span>
               </div>
               <div className={css.icon}>
-                <IoMdShare style={{color:'#0984e3'}} />
-                <span className={css.amount}>12</span>
+                <FacebookShareButton url={`${APP_BASE_URL}feed?slug=${feed.id}`}>
+                  <FacebookIcon size={20}  round={true}/>
+                </FacebookShareButton>
               </div>
-          
+              <div className={css.icon}>
+                <TwitterShareButton url={`${APP_BASE_URL}feed?slug=${feed.id}`}>
+                  <TwitterIcon size={20}  round={true}/>
+                </TwitterShareButton>
+              </div>
             </div>
           </div>
 

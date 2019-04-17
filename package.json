@@ -3,13 +3,14 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "heroku-postbuild": "npm run build",
+    "prod": "next export"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "firebase": "^5.9.2",
-    "firebase-admin": "^7.2.0",
     "next": "^8.0.4",
     "next-plugin-transpile-modules": "^2.0.0",
     "node-fetch": "^2.3.0",
@@ -18,6 +19,8 @@
     "react-dom": "^16.8.6",
     "react-icons": "^3.5.0",
     "react-redux": "^6.0.1",
+    "react-share": "^2.4.0",
+    "react-social-sharing": "^3.0.1",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",

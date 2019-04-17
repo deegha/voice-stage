@@ -11,23 +11,6 @@ class Nav extends React.PureComponent {
 
   renderMenuItems = (auth) => {
     const items = <ul>
-      <li>  
-        <Link prefetch href="/">
-          <a>Home</a>
-        </Link>
-      </li>
-    
-      <li>  
-        <Link prefetch href="/contact-us">
-          <a>Contact us</a>
-        </Link>
-      </li>
-    
-      <li>  
-        <Link prefetch href="/privacy-policy">
-          <a>Privacy policy</a>
-        </Link>
-      </li>
       {auth.authenticated? (
         <li>
           <img src={auth.user.photoURL} className={css.proPic} />

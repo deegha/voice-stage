@@ -1,7 +1,7 @@
 /**
  * Created by Deegha on 19/03/2019
  */
-// const fetch = require("node-fetch")
+const fetch = require("node-fetch")
 
 import {Fire} from './firebase'
 
@@ -9,14 +9,14 @@ const baseUrl = "https://us-central1-forum-79e2c.cloudfunctions.net/"
 // const baseUrl = `http://localhost:5000/forum-79e2c/us-central1/`
 
 
-// const POST = async (path, data) => {
-//   console.log('post', baseUrl+path)
-//   const result = await fetch(baseUrl+path, {
-//     method: "POST",
-//     body: JSON.stringify(data) 
-//   })
-//   return await result.json()
-// }   
+const POST = async (path, data) => {
+  console.log('post', baseUrl+path)
+  const result = await fetch(baseUrl+path, {
+    method: "POST",
+    body: JSON.stringify(data) 
+  })
+  return await result.json()
+}   
 
 const getRef = async (col) => {
 
@@ -95,25 +95,25 @@ export const createNewFeed = async(feed) => {
   }
 }
 
-export const fetchFeed = async(id) => {
+// export const fetchFeed = async(id) => {
  
   
-  try {
-    const firebase = await Fire()
-    const db = firebase.firestore()
-    const feedRef = db.collection("feeds").doc(id)
-    const feed = await feedRef.get()
+//   try {
+//     const firebase = await Fire()
+//     const db = firebase.firestore()
+//     const feedRef = db.collection("feeds").doc(id)
+//     const feed = await feedRef.get()
  
-    if (feed.exists) {
-      return feed.data()
-    } else {
-      return {} 
-    }
+//     if (feed.exists) {
+//       return feed.data()
+//     } else {
+//       return {} 
+//     }
 
-  }catch(err) {
-    console.log(err)
-  }
-}
+//   }catch(err) {
+//     console.log(err)
+//   }
+// }
 
 export const createComment = async (comment) => {
 
@@ -167,4 +167,4 @@ export const getComments = async (feedId) => {
   }
 } 
 
-// export const getFeedById = (feedId) => POST('getFeedById', {"feedId": feedId}) 
+export const getFeedById = (feedId) => POST('getFeedById', {"feedId": feedId}) 
