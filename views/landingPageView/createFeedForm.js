@@ -4,6 +4,7 @@ import { FiImage } from 'react-icons/fi'
 import {tags} from '../../components/tags'
 import { FilterTab, Modal, GoogleBtn, FacebookBtn } from '../../components'
 import { CLOUDINARY_UPLOAD_PRESET, CLOUDINARY_UPLOAD_URL }  from '../../config/config'
+import moment from 'moment'
 
 import { makeid, uploadImage } from '../../services/helper'
 // import request from 'superagent'
@@ -123,7 +124,9 @@ export class CreateFeedForm extends React.Component {
       },
       text: text,
       title: title,
-      tags: selectedTags
+      tags: selectedTags,
+      createdAt: moment().unix(),
+      likes: []
     }
 
     createFeed(feed)

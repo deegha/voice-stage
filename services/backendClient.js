@@ -27,21 +27,21 @@ const getRef = async (col) => {
   return ref 
 }
 
-export const fetchFeeds = async () => {
+// export const fetchFeeds = async () => {
 
-  const ref = await getRef('feeds')
-  const snapshot = await ref.get()
+//   const ref = await getRef('feeds')
+//   const snapshot = await ref.get()
 
-  let response = []
+//   let response = []
 
-  snapshot.forEach(doc => {
-    response = [...response, {
-      ...doc.data(),
-      id: doc.id
-    }]
-  })
-  return response
-}
+//   snapshot.forEach(doc => {
+//     response = [...response, {
+//       ...doc.data(),
+//       id: doc.id
+//     }]
+//   })
+//   return response
+// }
 
 export const createUser = async (user) => {
 
@@ -167,4 +167,10 @@ export const getComments = async (feedId) => {
   }
 } 
 
+export const fetchFeeds = () => POST('getFeeds')
+
 export const getFeedById = (feedId) => POST('getFeedById', {"feedId": feedId}) 
+
+export const like = (data) => POST('likedFeeds', data)
+
+export const removeLike = (data) => POST('removeLike', data)

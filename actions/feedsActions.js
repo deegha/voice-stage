@@ -1,5 +1,5 @@
 
-import { fetchFeeds, createNewFeed } from '../services/backendClient' 
+import { fetchFeeds, createNewFeed, like, removeLike } from '../services/backendClient' 
 
 export const GET_FEEDS_REQUEST = 'GET_FEEDS_REQUEST'
 export const GET_FEEDS_SUCCESS = 'GET_FEEDS_SUCCESS'
@@ -24,7 +24,7 @@ export const getFeeds = () => async (dispatch) => {
   dispatch(getFeedsRequest())
   try  {
     const feeds = await fetchFeeds()
-    dispatch(getFeedsSuccess(feeds))
+    dispatch(getFeedsSuccess(feeds.data))
   }catch (err) {
     console.log(err, 'error in fetching feeds')
     dispatch(getFeedsFail(err))
@@ -56,9 +56,6 @@ export const addFeedToState = (feed) => ({
 })
 
 export const createFeed = (feed) => async (dispatch) => {
-
-  console.log(feed, "create feed")
-
   dispatch(createFeedRequest())
   dispatch(addFeedToState(feed))
 
@@ -75,17 +72,18 @@ export const VOTE_UP = 'VOTE_UP'
 export const VOTE_DOWN = 'VOTE_DOWN'
 
 export const voteUpAction = (postID) => ( dispatch, getState ) =>  {
-
   const state = getState()
-  const userId = state.auth.user.id
+  const { displayName, id }= state.auth.user
   dispatch(({
     type: VOTE_UP,
-    userId,
+    id,
     postID
   }))
+
+  like({user:{id, displayName}, postID})
 }
 
-export const voteDownAction = (postID) => ( dispatch, getState ) => {
+export const voteDownAction = (postID, likeId) => ( dispatch, getState ) => {
   const state = getState()
   const userId = state.auth.user.id
 
@@ -94,4 +92,7 @@ export const voteDownAction = (postID) => ( dispatch, getState ) => {
     userId,
     postID
   }))
+
+  removeLike({likeId: likeId})
+
 }

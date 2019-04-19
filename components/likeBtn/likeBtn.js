@@ -23,20 +23,19 @@ class LikeBtn extends React.PureComponent {
   }
 
   componentDidMount() {
-   
     this.setState({liked: this.props.liked, likeCount: this.props.likeCount})
    
   }
 
   clickLike = (id) => () => {
-
    
     if(!this.props.authenticated) {
       this.props.login()
     }else {
 
       if(this.state.liked) {
-        this.props.voteDown(id)
+        this.props.voteDown(id, this.props.likeId)
+        this.setState(preState => ({liked: false,likeCount: preState.likeCount-1 }),()=> this.animate())
 
       }else {
         this.setState(preState => ({liked: true,likeCount: preState.likeCount+1 }),()=> this.animate())
@@ -63,7 +62,7 @@ class LikeBtn extends React.PureComponent {
             <IoIosHeartEmpty />
           )}
         </div>
-        <span className={css.amount}>{likeCount}</span>
+        <span className={css.amount}>{likeCount > 0 && likeCount}</span>
       </div>
     )
   }
@@ -71,7 +70,7 @@ class LikeBtn extends React.PureComponent {
 
 const mapDispatchToProps = (dispatch) => ({
   voteUp: (feedid) => dispatch(voteUpAction(feedid)),
-  voteDown: (feedid) => dispatch(voteDownAction(feedid)),
+  voteDown: (feedid, likeId) => dispatch(voteDownAction(feedid, likeId)),
 })
 
 const mapStateToProps = ( { auth:{authenticated} } ) => ({

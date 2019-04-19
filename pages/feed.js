@@ -65,8 +65,10 @@ class Feed extends React.Component {
 
   render() {
 
-    const { feed, auth } = this.props
+    const { feed, auth, slug } = this.props
     const { comments } = this.state
+
+    console.log(slug)
     return (
      <FeedsView comments={comments} reply={this.reply} feed={feed.data} auth={auth} addComment={this.addComment}/>
     )

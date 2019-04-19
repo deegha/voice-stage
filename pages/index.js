@@ -13,6 +13,7 @@ class LandingPage extends React.Component {
   render() {
 
     const { signUp, auth, feeds:{feeds, loading, error, errorMessage}, createFeed } = this.props
+
     return (
       <LandingPageView signUp={signUp} feeds={feeds} auth={auth} createFeed={createFeed}/> 
     ) 

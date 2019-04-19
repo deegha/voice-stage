@@ -67,7 +67,6 @@ export default class FeedsView extends React.PureComponent {
   render() {
     const { feed, auth, comments, reply } = this.props
     const { commentText, textAreaHeight, media} = this.state
-    console.log(feed, 'feed')
     return (
       <div className={css.container}>
         <Header 

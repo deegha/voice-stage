@@ -10,7 +10,8 @@ export class Feed extends React.PureComponent {
 
   render() {
 
-    const { feed } = this.props
+    const { feed, authUserId } = this.props
+    const liked = feed.likes?feed.likes.filter(like =>  like.id === authUserId):[]
 
     return (
       <div className={css.container} key={feed.id}>
@@ -60,7 +61,11 @@ export class Feed extends React.PureComponent {
             <div className={css.iconArea}>
              
               <div className={css.icon}>
-                <LikeBtn likeCount={100} liked={false} feedId={feed.id} />
+                <LikeBtn 
+                  likeCount={feed.likes.length} 
+                  liked={liked.length>0}
+                  likeId={liked !== undefined && liked.length > 0 && liked[0].likeId} 
+                  feedId={feed.id} />
               </div>
               <div className={css.icon}>
                 <MdComment  style={{color:'#0984e3'}}  />

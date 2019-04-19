@@ -1,4 +1,4 @@
-
+import moment from 'moment'
 export const userObj = {
   displayName: '',
   email: '',
@@ -12,4 +12,5 @@ export const userObj = {
   location: '',
   age: null,
   favTags: [],
+  createdAt: moment().unix()
 }
