@@ -16,8 +16,6 @@ const logo = '../../static/images/logo.png'
 
 class Header extends React.PureComponent {
 
-  componentWillMount
-
   componentDidMount() {
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
@@ -78,11 +76,11 @@ class Header extends React.PureComponent {
               <Link prefetch href="/">
                 <a>
                   <img src={APP_LOG} className={clsLogo}/>
-                  {/* {!isMobile && ( */}
+                  {!isMobile && (
                   <h1 className={css.siteName}>
                     {APP_NAME}
                   </h1>
-                  {/* )} */}
+                  )}
                 </a>
               </Link>
             </div>
