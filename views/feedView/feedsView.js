@@ -72,7 +72,7 @@ export default class FeedsView extends React.PureComponent {
       <div className={css.container}>
         <Header 
           ogImage={feed.media && feed.media.url}
-          url={APP_BASE_URL}
+          url={`${APP_BASE_URL}/feed?slug=${feed.id}`}
           description={feed.title !==''?`${feed.title} - ${APP_NAME}`:APP_NAME}
           title={feed.title !==''?`${feed.title} - ${APP_NAME}`:APP_NAME} />
         <div className={css.containerInner}>
