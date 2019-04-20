@@ -1,0 +1,27 @@
+@import '../../sharedStyles/sharedConsts.scss';
+
+.container {
+
+  a {
+    text-decoration: none;
+    color:   #a4b0be;
+    h2 {
+      font-size: 12px;
+      font-family: $FONT_PRIMARY;
+      margin: 0;
+    }
+  
+    p {
+      font-family: $FONT_SECONDARY;
+      font-size: 10px;
+      color: #a4b0be;
+      margin: 0 0 20px 0;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 5px;
+    }
+  }
+
+}

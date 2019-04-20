@@ -1,7 +1,7 @@
 import { Header, FilterTab, CommentBox } from '../../components'
 import { APP_BASE_URL, APP_NAME } from '../../config/config'
 import { makeid, uploadImage } from '../../services/helper'
-
+import moment from 'moment'
 import { FiImage } from 'react-icons/fi'
 import css from './styles.scss'
 
@@ -51,6 +51,7 @@ export default class FeedsView extends React.PureComponent {
         url: await uploadImage(this.state.media.file),
         type: this.state.media.type
       },
+      createdAt: moment().unix(),
       auther: {
         displayName: user.displayName,
         id: user.id,
@@ -91,6 +92,7 @@ export default class FeedsView extends React.PureComponent {
                {feed.tags.map(tag => (
                   <div className={css.tag} key={tag}>
                     <FilterTab title={tag} readOnly={true}/>
+                    <div  className={css.hasTag}> {`#${tag}`}</div>
                   </div>
                 ))}   
               </div>

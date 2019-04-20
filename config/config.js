@@ -5,3 +5,16 @@ export const APP_BASE_URL = 'https://stage-your-voice.herokuapp.com'
 
 export const CLOUDINARY_UPLOAD_PRESET = 'x8pebuvf'
 export const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/duqpgdc9v/upload'
+
+
+export const POST_STATUS = {
+  ACTIVE: 1,
+  BLOCKED: 2,
+  REPORTED: 3
+}
+
+export const USER_STATUS = {
+  ACTIVE: 1,
+  BLOCKED: 2,
+  REPORTED: 3
+}

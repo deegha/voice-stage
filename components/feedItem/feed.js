@@ -4,6 +4,7 @@ import { MdComment } from 'react-icons/md'
 import { FilterTab, LikeBtn } from '../../components'
 import { APP_BASE_URL } from '../../config/config'
 import Link from 'next/link'
+import moment from 'moment'
 
 import { FacebookShareButton, TwitterShareButton, FacebookIcon, TwitterIcon, } from 'react-share'
 export class Feed extends React.PureComponent {
@@ -18,12 +19,16 @@ export class Feed extends React.PureComponent {
        
         
         <div className={css.containerDetails}>
-          <div className={css.imageWrapper} >
+          {/* <div className={css.imageWrapper} >
             <div className={css.proImage} 
               style={{background: `url(${feed.auther.photoURL})`, backgroundSize: 'cover',
               backgroundRepeat: 'no-repeat'}} />
-          </div>
+          </div> */}
           <div className={css.detailWrapper}>
+           
+            <div className={css.auther}>
+              by <strong>{feed.auther.displayName}</strong> | {moment.unix(feed.createdAt).fromNow()}
+            </div>
             {feed.title && (
               <Link href={`feed?slug=${feed.id}`}>
               <a>
@@ -31,7 +36,6 @@ export class Feed extends React.PureComponent {
               </a>
             </Link>
             )}
-            
             {feed.media.url !== '' && (
               <Link href={`feed?slug=${feed.id}`}>
                 <a>
@@ -53,7 +57,7 @@ export class Feed extends React.PureComponent {
             {feed.text !== '' && (
               <Link href={`feed?slug=${feed.id}`}>
                 <a>  
-                  <p>{feed.text}</p>
+                  <p className={css.feedText}>{feed.text}</p>
                 </a>
               </Link>
             )}

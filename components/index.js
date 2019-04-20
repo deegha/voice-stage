@@ -14,6 +14,7 @@ import { GoogleBtn } from './googleBtn/googleBtn'
 import { Modal } from './modal/modal'
 import { CommentBox } from './commentBox/commentBox'
 import LikeBtn  from './likeBtn/likeBtn'
+import { TopComments } from './topComments/topComments'
 
 export {
   Head,
@@ -27,5 +28,6 @@ export {
   GoogleBtn,
   Modal,
   CommentBox,
-  LikeBtn
+  LikeBtn,
+  TopComments
 }

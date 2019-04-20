@@ -43,6 +43,24 @@ const getRef = async (col) => {
 //   return response
 // }
 
+export const getLatestComments = async () => {
+  try {
+    const ref = await getRef('comments')
+    const snapshot = await ref.get()
+
+    let response = []
+
+    snapshot.forEach(doc => {
+      response = [...response, {
+        ...doc.data()
+      }]
+    })
+    return response
+  }catch(err) {
+    console.log(err)
+  }
+}
+
 export const createUser = async (user) => {
 
   try {

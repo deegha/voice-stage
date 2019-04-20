@@ -15,7 +15,7 @@ export const windowReducer = (state=initialState, action) => {
         ...state,
         width: action.width,
         height: action.height,
-        isMobile: action.width<600?true:false
+        isMobile: action.width<900?true:false,
       }
   }
 }

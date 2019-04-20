@@ -2,6 +2,7 @@ import { FiImage } from 'react-icons/fi'
 import { CommentBox } from './commentBox'
 import { makeid, uploadImage } from '../../services/helper'
 import css from './styles.scss'
+import moment from 'moment'
 
 export class CommentView extends React.Component {
   constructor(props) {
@@ -9,8 +10,17 @@ export class CommentView extends React.Component {
     this.state = {
       commentText: '',
       textAreaHeight: 20,
-      replyBox: false
+      replyBox: false,
+      media: {
+        url: "",
+        type: 1,
+        file: ""
+      }
     }
+  } 
+
+  showlogin = () => {
+    console.log('login')
   }
 
   handleTitleChange = (e) => {
@@ -21,29 +31,58 @@ export class CommentView extends React.Component {
     this.setState({replyBox:true})
   }
 
-  reply = () => {
-    const { auth:{user} } = this.props
-    
-    const reply = {
-      id: makeid(10),
-      parent: this.props.comment.id,
-      superParent: this.props.comment.superParent,
-      comment: this.state.commentText,
-      comments: [],
-      auther: {
-        displayName: user.displayName,
-        id: user.id,
-        photoURL: user.photoURL
+  handleFileChange = (event) => {
+    const file = event.target.files[0]
+    const url = event.target.files.length > 0 ?URL.createObjectURL(event.target.files[0]): ""
+    this.setState(preState=> ({
+      ...preState,
+      media:{
+        url,
+        type: 1,
+        file
       }
-    }
+    }))
+  }
 
-    this.props.reply(reply)
-    this.setState({replyBox:false, commentText: ''})
+  reply = async () => {
+    const { auth:{user, authenticated} } = this.props
+     
+    if(!authenticated) {
+      this.showlogin()
+    }else {
+
+      if( this.state.commentText !== '' ||  this.state.media.file !== '') {
+        const reply = {
+          id: makeid(10),
+          parent: this.props.comment.id,
+          superParent: this.props.comment.superParent,
+          comment: this.state.commentText,
+          comments: [],
+          media: {
+            url: await uploadImage(this.state.media.file),
+            type: this.state.media.type
+          },
+          createdAt: moment().unix(),
+          auther: {
+            displayName: user.displayName,
+            id: user.id,
+            photoURL: user.photoURL
+          }
+        }
+    
+        this.props.reply(reply)
+        this.setState({replyBox:false, commentText: '', media: {
+          url: "",
+          type: 1,
+          file: ""
+        }})
+      }
+    } 
   }
 
   render () {
     const { comment, auth, reply } = this.props
-    const { commentText, replyBox } = this.state
+    const { commentText, replyBox, media } = this.state
   
     const writeCommentCls = replyBox?[css.activeClass,css.writeComment].join(' '):css.writeComment
 
@@ -54,12 +93,23 @@ export class CommentView extends React.Component {
           <div className={css.commentAuther}>
             <div style={{background: `url(${comment.auther.photoURL})`, backgroundSize: 'cover',
               backgroundRepeat: 'no-repeat'}} className={css.commentAutherImg} />
-            <div className={css.commentName}>{comment.auther.displayName}</div>         
+            <div className={css.commentName}>
+              <strong>
+              {comment.auther.displayName} 
+              </strong>
+              {` | `} 
+              {moment.unix(comment.createdAt).fromNow()}</div>         
           </div>     
           <p>{comment.comment}</p>
           {comment.media && comment.media.url !== '' && (
             <div className={css.commentImage}>
               <img src={comment.media.url} />
+            </div>
+          )}
+
+           {media && media.url !== '' && (
+            <div className={css.commentImage}>
+              <img src={media.url} />
             </div>
           )}
           {!replyBox && (
@@ -78,7 +128,7 @@ export class CommentView extends React.Component {
                 placeholder={'how do you feel about it'} />
     
               <div className={css.optionsArea}>
-                <input type="file" onChange />
+                <input type="file" onChange={this.handleFileChange} />
                 <FiImage style={{color: '#636e72', fontSize: '20px'}} />
               </div>
             </div>

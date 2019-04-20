@@ -4,17 +4,20 @@
 .container {
   background-color: $WHITE;
   padding: 20px;
-  margin: 15px 0;
+  margin: 5px 0;
   border-radius: 10px;
   box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.08);
+  width: 100%;
+
 
   .containerMedia {
-    max-width: 200px;
-    
+    max-width: 506px;
     img {
       width: 100%;
+      resize: contain;
       box-shadow: 0 2px 16px 0 #00000033;
       margin-bottom: 20px;
+      border-radius: 5px;
     }
   }
 
@@ -22,25 +25,25 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-
+    flex-direction: column; 
     .imageWrapper {
    
-      
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 2px;
-      
+      margin-bottom: 10px;
       .proImage {
         width: 30px;
         height: 30px;
         overflow: hidden;
         border-radius: 50%;
         box-shadow: 0 2px 16px 0 #00000033;
+        
       }
     }
     .detailWrapper {
-      width: 90%;
+      width: 100%;
 
       a {
         text-decoration: none;
@@ -65,9 +68,22 @@
         font-size: 25px;
         color: #000;
         cursor: pointer;
+        margin: 10px 0;
+      }
+
+      .auther {
+        font-family: $FONT_PRIMARY;
+        font-size: 10px;
+        color: #a4b0be;
+        font-style: italic;
+        margin: 0 0 20px 0;
+
+        strong {
+          // color: #2d3436;
+        }
       }
       p {
-        font-family: $FONT_PARA;
+        font-family: $FONT_SECONDARY;
         color: #636e72;
         line-height: 1.5;
         letter-spacing: 1px;
@@ -77,15 +93,14 @@
 
       .iconArea {
         display: flex;
-        justify-content: flex-start;
-        margin-top: 30px;
+        justify-content: flex-end;
+        margin-top: 10px;
         .icon {
           display: flex;
           align-items: center;
           justify-content: center;
           margin-right: 20px;
           cursor: pointer;
-          width: 40px;
 
           .amount {
             margin-left: 5px;

@@ -6,12 +6,70 @@
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
-    align-items:center;
+    align-items:center; 
+    padding-bottom: 40px;
     
+    .containerInner {
+      display: flex;
+      justify-content: space-between;
+      width: 70%;
+
+      .wrapperInner {
+        width: 60%;
+      }
+
+      .wrapperInnerRght {
+        width: 30%;
+      }
+    }
+
+    .containerInnerSS {
+      display: flex;
+      justify-content: space-between;
+      width: 90%;
+
+      .wrapperInner {
+        width: 60%;
+      }
+
+      .wrapperInnerRght {
+        width: 30%;
+      }
+    }
+
+    .containerInnerMobile {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+
+      .wrapperInner {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .container {
+          width: 100%;
+        }
+      }
+
+      .wrapperInnerRght {
+        width: 90%;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    .topCommentSection {
+      padding: 20px 0;
+    }
 
     .createFormOuter {
       margin: 40px 0 10px 0;
-      width: 60%;
+      width: 70%;
       max-width: 1000px;
      
       .secondForm {
@@ -83,7 +141,7 @@
       .createFeedConainer {
         background-color: #f1f2f6;
         padding: 10px;
-        
+        box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.08);
        
   
         display: flex;
@@ -152,10 +210,7 @@
 
     
 
-    .wrapperInner {
-      max-width: 1000px;
-      width: 60%;
-    }
+    
   }
 }
 

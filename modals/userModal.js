@@ -1,3 +1,5 @@
+import { USER_STATUS } from '../config/config'
+
 import moment from 'moment'
 export const userObj = {
   displayName: '',
@@ -11,6 +13,7 @@ export const userObj = {
   reputation: 0,
   location: '',
   age: null,
+  status: USER_STATUS.ACTIVE,
   favTags: [],
   createdAt: moment().unix()
 }

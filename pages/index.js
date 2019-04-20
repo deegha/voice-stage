@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { getFeeds, createFeed } from '../actions/feedsActions'
+import { loadLatestComments } from '../actions/comentsActions'
 import  {LandingPageView}  from '../views/landingPageView/landingPageView'
 import { signUp } from '../actions/authUserActions'
 
@@ -8,14 +9,21 @@ class LandingPage extends React.Component {
 
   componentDidMount() {
     this.props.getFeeds()
+    this.props.loadComments()
   }
 
   render() {
 
-    const { signUp, auth, feeds:{feeds, loading, error, errorMessage}, createFeed } = this.props
+    const { window, comments, signUp, auth, feeds:{feeds, loading, error, errorMessage}, createFeed } = this.props
 
     return (
-      <LandingPageView signUp={signUp} feeds={feeds} auth={auth} createFeed={createFeed}/> 
+      <LandingPageView 
+        window={window}
+        comments={comments} 
+        signUp={signUp} 
+        feeds={feeds}
+        auth={auth} 
+        createFeed={createFeed}/> 
     ) 
   }
 }
@@ -23,12 +31,15 @@ class LandingPage extends React.Component {
 const mapDispatchToProps = (dispatch) => ({
   getFeeds: () => dispatch(getFeeds()),
   createFeed:(feed) => dispatch(createFeed(feed)),
-  signUp: (user, provider) => dispatch(signUp(user, provider))
+  signUp: (user, provider) => dispatch(signUp(user, provider)),
+  loadComments: () => dispatch(loadLatestComments())
 })
 
-const mapStateToProps = ({feeds, auth}) => ({
+const mapStateToProps = ({feeds, auth, comments, window}) => ({
   feeds,
-  auth
+  auth,
+  comments,
+  window
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LandingPage)

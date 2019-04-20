@@ -3,7 +3,7 @@ import { FiImage } from 'react-icons/fi'
 
 import {tags} from '../../components/tags'
 import { FilterTab, Modal, GoogleBtn, FacebookBtn } from '../../components'
-import { CLOUDINARY_UPLOAD_PRESET, CLOUDINARY_UPLOAD_URL }  from '../../config/config'
+import { CLOUDINARY_UPLOAD_PRESET, CLOUDINARY_UPLOAD_URL, POST_STATUS }  from '../../config/config'
 import moment from 'moment'
 
 import { makeid, uploadImage } from '../../services/helper'
@@ -103,35 +103,33 @@ export class CreateFeedForm extends React.Component {
     const { title, text,selectedTags, media } = this.state
 
     if(title !== '' || media.url !== '') {
-     
-    
+      if(!authenticated) {
+        this.openLoginModal()
+        return false
+      }
 
-    if(!authenticated) {
-      this.openLoginModal()
-      return false
+      const feed = {
+        id : makeid(10),
+        auther: {
+          id: user.id,
+          photoURL: user.photoURL,
+          displayName: user.displayName
+        },
+        media: {
+          type: media.type !== null? media.type: null,
+          url: media.url !== ''?await this.handleImageUpload(media.file): ''
+        },
+        text: text,
+        title: title,
+        tags: selectedTags,
+        status: POST_STATUS.ACTIVE,
+        createdAt: moment().unix(),
+        likes: []
+      }
+
+      createFeed(feed)
+      this.setToInitialState()
     }
-
-    const feed = {
-      id : makeid(10),
-      auther: {
-        id: user.id,
-        photoURL: user.photoURL,
-        displayName: user.displayName
-      },
-      media: {
-        type: media.type !== null? media.type: null,
-        url: media.url !== ''?await this.handleImageUpload(media.file): ''
-      },
-      text: text,
-      title: title,
-      tags: selectedTags,
-      createdAt: moment().unix(),
-      likes: []
-    }
-
-    createFeed(feed)
-    this.setToInitialState()
-  }
   } 
 
   selectTag = (tag)=> () => {
@@ -170,13 +168,14 @@ export class CreateFeedForm extends React.Component {
   render() {
 
     const { openText, textAreaHeight, maxCharactorLenght, title, text, selectedTags, media, showLogin,imageUloading }  = this.state
+    const { window:{width} } = this.props
 
     const hasContent = (title.length > 0 || media.url !== '')
-
     const outerCls = hasContent ?[css.createFormOuter,css.boxBorder].join(' '): css.createFormOuter
 
+    const extraStyles = width < 900? {width: '100%'}:{}
     return (
-      <div className={outerCls}>
+      <div className={outerCls} style={extraStyles}>
      
         <div className={css.createFeedConainer}>
           <div className={css.textAreaWrapper}>
@@ -195,7 +194,7 @@ export class CreateFeedForm extends React.Component {
           ): (
             <div className={css.buttonArea} onClick={this.startDiscussion}>
             <div className={!hasContent?css.buttonCreateDis:css.buttonCreate}>
-            {!hasContent?'Start typing':'Start discussion'}</div>
+            {!hasContent?'...':'Stage'}</div>
           </div>
           )}
          
@@ -226,7 +225,7 @@ export class CreateFeedForm extends React.Component {
           </div>
         </div>
 
-        {openText && (
+        {hasContent && (
           <div className={css.secondForm}>
             <textarea 
               value={text}

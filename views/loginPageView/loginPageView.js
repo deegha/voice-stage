@@ -6,6 +6,7 @@ import { TextInput, Button, Header, FacebookBtn, GoogleBtn } from '../../compone
 import css from './styles.scss'
 import { APP_NAME, APP_LOG, APP_DESCRIPTION } from '../../config/config'
 
+const img = '../../static/images/2085405.png'
 export class LoginPageView extends React.Component {
 
   render() {
@@ -29,8 +30,13 @@ export class LoginPageView extends React.Component {
               <GoogleBtn signUp={signUp} />
             </div>
             <div className={css.seperator}>
-              OR
             </div>
+
+            <div className={css.image}>
+              <img src={img} />
+            </div>
+
+            {/*
             <div className={css.formController}>
               <TextInput 
                 value={email}
@@ -61,7 +67,7 @@ export class LoginPageView extends React.Component {
                 title={'Create a new account'} 
                 callBack={()=>console.log("hi")} 
                 color={'secondary'} />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
