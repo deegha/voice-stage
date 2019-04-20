@@ -12,9 +12,11 @@ import {APP_NAME, APP_LOG} from '../../config/config'
 import { Head, Nav } from '../'
 import {Fire} from '../../services/firebase'
 
-const logo = '../../static/logo.png'
+const logo = '../../static/images/logo.png'
 
 class Header extends React.PureComponent {
+
+  componentWillMount
 
   componentDidMount() {
     this.updateWindowDimensions()
@@ -33,9 +35,6 @@ class Header extends React.PureComponent {
 
           this.props.login(userObj)
         }
-     
-
-        
       })
     })
     
@@ -52,6 +51,7 @@ class Header extends React.PureComponent {
   render () {
 
     const { auth, title, description, url, ogImage, rightBtn, window:{isMobile} } = this.props
+    const clsLogo = isMobile? css.logoMobile :css.logo
     
     return(
       <div>
@@ -66,10 +66,12 @@ class Header extends React.PureComponent {
             <div className={css.headerLeft}>
               <Link prefetch href="/">
                 <a>
-                  <img src={APP_LOG} className={css.logo}/>
+                  <img src={APP_LOG} className={clsLogo}/>
+                  {!isMobile && (
                   <h1 className={css.siteName}>
                     {APP_NAME}
                   </h1>
+                  )}
                 </a>
               </Link>
             </div>
