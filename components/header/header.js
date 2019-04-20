@@ -8,7 +8,7 @@ import { userObj } from '../../modals/userModal'
 import css from './styles.scss'
 import Link from 'next/link'
 import propTypes from 'prop-types'
-import {APP_NAME} from '../../config/config'
+import {APP_NAME, APP_LOG} from '../../config/config'
 import { Head, Nav } from '../'
 import {Fire} from '../../services/firebase'
 
@@ -66,6 +66,7 @@ class Header extends React.PureComponent {
             <div className={css.headerLeft}>
               <Link prefetch href="/">
                 <a>
+                  <img src={APP_LOG} className={css.logo}/>
                   <h1 className={css.siteName}>
                     {APP_NAME}
                   </h1>

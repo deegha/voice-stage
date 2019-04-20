@@ -66,8 +66,12 @@ export default class FeedsView extends React.PureComponent {
   }
 
   render() {
-    const { feed, auth, comments, reply } = this.props
+    const { feed, auth, comments, reply, window:{width} } = this.props
     const { commentText, textAreaHeight, media} = this.state
+
+    const clWrapper = width<700?css.wrapperMobile:css.wrapper
+    const clWriteComment = width<700?css.writeCommentMobile:css.writeComment
+
     return (
       <div className={css.container}>
         <Header 
@@ -76,7 +80,7 @@ export default class FeedsView extends React.PureComponent {
           description={feed.title !==''?`${feed.title} - ${APP_NAME}`:APP_NAME}
           title={feed.title !==''?`${feed.title} - ${APP_NAME}`:APP_NAME} />
         <div className={css.containerInner}>
-          <div className={css.wrapper}>
+          <div className={clWrapper}>
             {feed.media && feed.media.url !== '' && (
             <div className={css.featuredImage}>
               <img src={feed.media.url} />
@@ -99,7 +103,7 @@ export default class FeedsView extends React.PureComponent {
             )}
 
 
-            <div className={css.writeComment}>
+            <div className={clWriteComment}>
               <div className={css.textAreaWrapper}>
                 <textarea 
                   value={commentText}

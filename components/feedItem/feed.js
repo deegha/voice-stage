@@ -76,12 +76,12 @@ export class Feed extends React.PureComponent {
                 <span className={css.amount}>123</span>
               </div>
               <div className={css.icon}>
-                <FacebookShareButton url={`${APP_BASE_URL}feed?slug=${feed.id}`}>
+                <FacebookShareButton url={`${APP_BASE_URL}/feed?slug=${feed.id}`}>
                   <FacebookIcon size={20}  round={true}/>
                 </FacebookShareButton>
               </div>
               <div className={css.icon}>
-                <TwitterShareButton url={`${APP_BASE_URL}feed?slug=${feed.id}`}>
+                <TwitterShareButton url={`${APP_BASE_URL}/feed?slug=${feed.id}`}>
                   <TwitterIcon size={20}  round={true}/>
                 </TwitterShareButton>
               </div>

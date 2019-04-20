@@ -65,18 +65,24 @@ class Feed extends React.Component {
 
   render() {
 
-    const { feed, auth, slug } = this.props
+    const { feed, auth, slug, window } = this.props
     const { comments } = this.state
 
-    console.log(slug)
     return (
-     <FeedsView comments={comments} reply={this.reply} feed={feed.data} auth={auth} addComment={this.addComment}/>
+     <FeedsView 
+      window={window}
+      comments={comments} 
+      reply={this.reply} 
+      feed={feed.data} 
+      auth={auth} 
+      addComment={this.addComment}/>
     )
   }
 }
 
-const mapStateToProps = ({auth}) => ({
-  auth
+const mapStateToProps = ({auth, window}) => ({
+  auth,
+  window
 })
 
 export default connect(mapStateToProps)(Feed)

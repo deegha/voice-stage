@@ -24,4 +24,5 @@
   {tagKey:'react', tag:'React'},
   {tagKey:'react native', tag:'React Native'},
   {tagKey:'politics', tag:'politics'},
+  {tagKey:'cars', tag:'cars'},
 ]
