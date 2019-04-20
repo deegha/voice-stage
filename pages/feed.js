@@ -21,7 +21,6 @@ class Feed extends React.Component {
   }
 
   async componentDidMount() {
-    console.log(this.props.feed,"this.props")
     const comments = await getComments(this.props.slug)
     this.setState({comments})
   }
