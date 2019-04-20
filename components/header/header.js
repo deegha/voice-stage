@@ -45,7 +45,7 @@ class Header extends React.PureComponent {
   
   updateWindowDimensions = () => {
     console.log("setting listners")
-    console.log( window, window.innerWidth)
+    console.log( window.innerWidth)
     this.props.setDim({ width: window.innerWidth, height: window.innerHeight })
   }
 
