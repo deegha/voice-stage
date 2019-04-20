@@ -11,12 +11,11 @@ import propTypes from 'prop-types'
 import {APP_NAME, APP_LOG} from '../../config/config'
 import { Head, Nav } from '../'
 import {Fire} from '../../services/firebase'
-
-const logo = '../../static/images/logo.png'
-
 class Header extends React.PureComponent {
 
+
   componentDidMount() {
+    
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
 
@@ -45,6 +44,7 @@ class Header extends React.PureComponent {
   }
   
   updateWindowDimensions = () => {
+    console.log("setting listners")
     this.props.setDim({ width: window.innerWidth, height: window.innerHeight })
   }
 
@@ -76,11 +76,11 @@ class Header extends React.PureComponent {
               <Link prefetch href="/">
                 <a>
                   <img src={APP_LOG} className={clsLogo}/>
-                  {!isMobile && (
+                  {/* {!isMobile && ( */}
                   <h1 className={css.siteName}>
                     {APP_NAME}
                   </h1>
-                  )}
+                  {/* )} */}
                 </a>
               </Link>
             </div>
