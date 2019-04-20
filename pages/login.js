@@ -10,8 +10,6 @@ import { LoginPageView } from '../views/loginPageView/loginPageView'
 class Login extends React.Component {
 
   state = { 
-    width: 0, 
-    height: 0 ,
     email: '',
     password: '',
     validForm: false
@@ -22,23 +20,12 @@ class Login extends React.Component {
     if(this.props.authenticated) {
       Router.push("/")
     }
-
-    this.updateWindowDimensions()
-    window.addEventListener('resize', this.updateWindowDimensions)
   }
   
   componentDidUpdate(preProps) {
     if(this.props.authenticated && preProps.authenticated !== this.props.authenticated) {
       Router.push("/")
     }
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateWindowDimensions)
-  }
-  
-  updateWindowDimensions = () => {
-    this.setState({ width: window.innerWidth, height: window.innerHeight })
   }
 
   onChange = (feild, value) => this.setState({
@@ -56,9 +43,10 @@ class Login extends React.Component {
   }
 
   render () {
-    const { signUp } = this.props
+    const { signUp, window } = this.props
     return (
       <LoginPageView 
+        window={window}
         signUp={signUp}
         {...this.state} onChange={this.onChange}/>
     )
@@ -69,8 +57,9 @@ const mapDispatchToProps = (dispatch) => ({
   signUp: (user, provider) => dispatch(signUp(user, provider))
 })
 
-const mapStateToProps = ({auth: {authenticated}}) => ({
-  authenticated
+const mapStateToProps = ({auth: {authenticated}, window}) => ({
+  authenticated,
+  window
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

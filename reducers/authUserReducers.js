@@ -47,6 +47,8 @@ export const authUserReducer = (state=initialState, action) => {
         errorMessage: '',
         user: action.user
       }
+    case Actions.UNAUTHENTICATE:
+      return initialState
   }
 }
 

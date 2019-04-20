@@ -10,7 +10,10 @@ const img = '../../static/images/2085405.png'
 export class LoginPageView extends React.Component {
 
   render() {
-    const { width, height, onChange, email, password, validForm, signUp } = this.props
+    const { window:{width}, onChange, email, password, validForm, signUp } = this.props
+    
+    const clsImage = width < 800? css.imageMobile : css.image
+    
     return (
       <div>
          <Header
@@ -19,9 +22,6 @@ export class LoginPageView extends React.Component {
           title={`Login | ${APP_NAME}`} 
           description={APP_DESCRIPTION}/>
         <div className={css.container}>
-          {/* <div className={css.imageSlider}>
-            <ImageSlider />
-          </div> */}
           <div className={css.form}>
             <div className={css.formController}>
               <FacebookBtn />
@@ -32,7 +32,7 @@ export class LoginPageView extends React.Component {
             <div className={css.seperator}>
             </div>
 
-            <div className={css.image}>
+            <div className={clsImage}>
               <img src={img} />
             </div>
 

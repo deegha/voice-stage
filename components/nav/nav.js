@@ -10,46 +10,28 @@ class Nav extends React.PureComponent {
   }
 
   renderMenuItems = (auth) => {
-
-    console.log(auth.authenticated, "auth.authenticated")
     const items = <ul>
-
-      {auth.authenticated? (
+       {auth.authenticated && (
         <li>
-          <img src={auth.user.photoURL} className={css.proPic} />
+          <Link href="/profile">
+            <a>Profile</a>
+          </Link>
         </li>
-      
-      ) : (
-         <li>  
-         <Link prefetch href="/login">
-           <a>Login</a>
-         </Link>
-       </li>
-      )}
+       )}
      
-    </ul>
-
-    return items
-  }
-
-  renderMenuItemsMobile = (auth) => {
-    const items = <ul>
-
       <li>
-        <Link>
+        <Link href="/contact-us">
           <a>Contact Us</a>
         </Link>
       </li>
 
       <li>
-        <Link>
+        <Link href="/privacy-policy">
           <a>Privacy Policy</a>
         </Link>
       </li>
       {auth.authenticated? (
-        <li>
-          <img src={auth.user.photoURL} className={css.proPic} />
-        </li>
+        <li onClick={this.props.signOut}>Logout</li>
       ) : (
          <li>  
          <Link prefetch href="/login">
@@ -71,32 +53,25 @@ class Nav extends React.PureComponent {
     const { isMobile, auth } = this.props
     const {moblieMenuOpen} = this.state
     const clsMMenu = moblieMenuOpen?css.mMenuOpen:css.mMenuClose
-    // const clsMMenu = css.mMenuOpen  
-    if(isMobile)
-      return (
-        <div>
-          <div className={css.mobileMenu} onClick={this.togleMenu}>
+
+    return(
+      <nav>
+        <div className={css.mainMenu} onClick={this.togleMenu}>
           {auth.authenticated? (
             <img src={auth.user.photoURL} className={css.proPic} />
             ) : ( 
            <div>
-              <div className={css.mobileMenuDot} />
-              <div className={css.mobileMenuDot} />
-              <div className={css.mobileMenuDot} />
+              <div className={css.menuDot} />
+              <div className={css.menuDot} />
+              <div className={css.menuDot} />
            </div>
             )}
-          </div>
-          <div className={clsMMenu}>
-            <div className={css.menuItems}>
-            {this.renderMenuItemsMobile(auth)}
-            </div>
+        </div>
+        <div className={clsMMenu}>
+          <div className={css.menuItems}>
+          {this.renderMenuItems(auth)}
           </div>
         </div>
-      )
-
-    return(
-      <nav className={css.mainMenu}>
-        {this.renderMenuItems(auth)}
       </nav>
     )
   }

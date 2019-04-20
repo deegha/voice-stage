@@ -3,7 +3,7 @@
  */
 import { connect } from 'react-redux'
 import { setWindowDimentions } from '../../actions/windowActions'
-import { signUp } from '../../actions/authUserActions'
+import { signUp, logOut } from '../../actions/authUserActions'
 import { userObj } from '../../modals/userModal'
 import css from './styles.scss'
 import Link from 'next/link'
@@ -34,6 +34,8 @@ class Header extends React.PureComponent {
           userObj.providerId = user.providerId
 
           this.props.login(userObj)
+        }else {
+          this.props.logOut()
         }
       })
     })
@@ -46,6 +48,15 @@ class Header extends React.PureComponent {
   
   updateWindowDimensions = () => {
     this.props.setDim({ width: window.innerWidth, height: window.innerHeight })
+  }
+
+  signOut = () => {
+    console.log("clicked")
+    Fire().then(firebase => firebase.auth().signOut().then(function() {
+      console.log('Signed Out');
+    }, function(error) {
+      console.error('Sign Out Error', error);
+    }))
   }
 
   render () {
@@ -76,7 +87,7 @@ class Header extends React.PureComponent {
               </Link>
             </div>
             <div className={css.headerRight}>
-              <Nav isMobile={isMobile} auth={auth} />
+              <Nav isMobile={isMobile} auth={auth} signOut={this.signOut} />
               {this.props.rightBtn}
             </div>
           </div>
@@ -102,7 +113,8 @@ const mapStateToProps = ({window, auth}) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   setDim: (dim) => dispatch(setWindowDimentions(dim)),
-  login:(user) => dispatch(signUp(user))
+  login:(user) => dispatch(signUp(user)),
+  logOut: ()=> dispatch(logOut())
 })
 
 
