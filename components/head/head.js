@@ -8,7 +8,7 @@ import { string } from 'prop-types'
 
 const defaultDescription = ''
 const defaultOGURL = ''
-const defaultOGImage = ''
+const defaultOGImage = 'https://res.cloudinary.com/duqpgdc9v/image/upload/v1555753860/logo_transparent.png'
 
 const Head = props => (
   <NextHead>

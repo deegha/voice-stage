@@ -1,5 +1,5 @@
 import { Header, FilterTab, CommentBox } from '../../components'
-import { APP_BASE_URL, APP_NAME } from '../../config/config'
+import { APP_BASE_URL, APP_NAME, APP_LOG } from '../../config/config'
 import { makeid, uploadImage } from '../../services/helper'
 import moment from 'moment'
 import { FiImage } from 'react-icons/fi'
@@ -75,7 +75,7 @@ export default class FeedsView extends React.PureComponent {
     return (
       <div className={css.container}>
         <Header 
-          ogImage={feed.media && feed.media.url}
+          ogImage={feed.media && feed.media.url !== '' ? feed.media.url:APP_LOG}
           url={`${APP_BASE_URL}/feed?slug=${feed.id}`}
           description={feed.title !==''?`${feed.title} - ${APP_NAME}`:APP_NAME}
           title={feed.title !==''?`${feed.title} - ${APP_NAME}`:APP_NAME} />

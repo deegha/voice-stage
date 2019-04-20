@@ -16,6 +16,7 @@
   height: 6px;
   border-radius: 5px;
   background-color: $PRIMARY_COLOR;
+  margin-bottom: 2px;
 }
 
 
@@ -30,31 +31,31 @@
   display: none ;
 }
 .mMenuOpen {
-  background-color: $SECONDARY_COLOR;
+  background-color: #fff;
   width: 100%;
   position: fixed;
   opacity: 0.98;
-  top: 45px;
+  top: 60px;
   right: 0;
   left: 0;
   height: 200px;
   animation: openMenu .2s ease;
   display: block;
-
+  box-shadow: 0 2px 16px 0 #00000033;
 
   .menuItems {
     ul {
 
       padding: 25px;
       li{
-        color: #ffffff;
+        color: #000000;
         margin-bottom: 25px;
         list-style: none;
        
       }
       a {
-        color: #ffffff;
-        font-family: $FONT_PARA;
+        color: #000000;
+        font-family: $FONT_SECONDARY;
       }
     }
   }
@@ -71,13 +72,7 @@
       color: $TEXT;
       list-style: none;
       
-      .proPic {
-        width: 25px;
-        height: 25px;
-        border-radius: 20px;
-        cursor: pointer;
-        animation: activate 1.2s ease;
-      }
+     
     }
     a {
       color: $TEXT;
@@ -88,6 +83,14 @@
   }
 }
 
+
+.proPic {
+  width: 25px;
+  height: 25px;
+  border-radius: 20px;
+  cursor: pointer;
+  animation: activate 1.2s ease;
+}
 
 @keyframes closeMenu {
   0% {
