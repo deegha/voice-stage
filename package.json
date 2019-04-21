@@ -2,7 +2,7 @@
   "name": "create-next-example-app",
   "scripts": {
     "dev": "next",
-    "build": "NODE_ENV=production next build",
+    "build": "next build",
     "start": "next start -p $PORT",
     "heroku-postbuild": "npm run build",
     "prod": "next export"
@@ -25,9 +25,7 @@
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
-    "superagent": "^5.0.2"
-  },
-  "devDependencies": {
+    "superagent": "^5.0.2",
     "uglifyjs-webpack-plugin": "^2.1.2"
   }
 }
