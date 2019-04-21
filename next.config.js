@@ -1,7 +1,7 @@
 const withSass = require('@zeit/next-sass')
 const withCSS = require('@zeit/next-css')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-
+const CriticalPlugin = require('webpack-plugin-critical').CriticalPlugin
 
 module.exports = withCSS(withSass({
   cssModules: true,
@@ -22,6 +22,12 @@ module.exports = withCSS(withSass({
           mangle: true
         },
         sourceMap: true
+      }),
+      new CriticalPlugin({
+        src: 'index.html',
+        inline: true,
+        minify: true,
+        dest: 'index.html'
       })
     ]
 

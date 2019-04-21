@@ -26,6 +26,7 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "superagent": "^5.0.2",
-    "uglifyjs-webpack-plugin": "^2.1.2"
+    "uglifyjs-webpack-plugin": "^2.1.2",
+    "webpack-plugin-critical": "^1.0.0"
   }
 }
