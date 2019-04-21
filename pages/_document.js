@@ -29,7 +29,7 @@ export default class MyDocument extends Document {
 
     // const { isProduction } = this.props
     return (
-      <html>
+      <html lang="en">
         
         <Head>
           <link rel="stylesheet" href="/_next/static/style.css" />
