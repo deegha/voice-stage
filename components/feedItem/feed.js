@@ -26,9 +26,20 @@ export class Feed extends React.PureComponent {
           </div> */}
           <div className={css.detailWrapper}>
            
-            <h2 className={css.auther}>
-              by <strong>{feed.auther.displayName}</strong> | {moment.unix(feed.createdAt).fromNow()}
-            </h2>
+              <div className={css.auther}>
+              
+                by  
+                <h2>
+                  <Link href={`/profile?slug=${feed.auther.id}`}>
+                    <a>{feed.auther.displayName} </a>
+                  </Link>
+                </h2> 
+                <img src={feed.auther.photoURL} className={css.proImage} /> 
+                <span className={css.sepereator}>|</span> 
+                {moment.unix(feed.createdAt).fromNow()}
+              
+              </div>
+           
             {feed.title && (
               <Link href={`feed?slug=${feed.id}`}>
               <a>

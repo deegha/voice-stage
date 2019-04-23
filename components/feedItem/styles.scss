@@ -33,14 +33,7 @@
       align-items: center;
       padding: 2px;
       margin-bottom: 10px;
-      .proImage {
-        width: 30px;
-        height: 30px;
-        overflow: hidden;
-        border-radius: 50%;
-        box-shadow: 0 2px 16px 0 #00000033;
-        
-      }
+     
     }
     .detailWrapper {
       width: 100%;
@@ -72,15 +65,45 @@
       }
 
       .auther {
-        font-family: $FONT_PRIMARY;
-        font-size: 10px;
         color: #a4b0be;
         font-style: italic;
-        margin: 0 0 20px 0;
+        display: flex;
+        align-items: center;
+        font-size: 10px;
+
+        h2 {
+          margin: 0 5px;
+          padding: 0;
+          display: flex; 
+        }
+
+        a {
+          font-family: $FONT_PRIMARY;
+          font-size: 10px;
+          color: #a4b0be;
+          font-style: italic;
+        }
 
         strong {
-          // color: #2d3436;
+          color: #2d3436;
         }
+
+        .proImage {
+          width: 20px;
+          height: 20px;
+          overflow: hidden;
+          border-radius: 50%;
+          // box-shadow: 0 2px 16px 0 #00000033;
+          margin: 0 5px;
+        }
+
+        .sepereator {
+          margin: 0 10px 0 5px;
+        }
+        
+        margin: 0 0 20px 0;
+
+        
       }
       p {
         font-family: $FONT_SECONDARY;

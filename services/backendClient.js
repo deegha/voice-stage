@@ -183,7 +183,44 @@ export const getComments = async (feedId) => {
   }catch(err) {
     console.log(err)
   }
-} 
+}
+
+export const getUser = async  (id) => {
+  try {
+    const firebase = await Fire()
+    const db = firebase.firestore()
+    const user = await db.collection("users").doc(id).get()
+    const response = {
+      id: user.id,
+      ...user.data()
+    }
+
+    return response
+  }catch(err) {
+    console.log(err)
+  }
+}
+
+export const getUserPosts = async (id) => {
+  try {
+    const firebase = await Fire()
+    const db = firebase.firestore()
+    const feedRef = db.collection("feeds").where('auther.id', '==', id)
+    const snapshot = await feedRef.get()
+
+    let response = []
+
+    snapshot.forEach(doc => {
+      response = [...response, {
+        ...doc.data(),
+        id: doc.id
+      }]
+    })
+    return response
+  }catch(err) {
+    console.log(err)
+  }
+}
 
 export const fetchFeeds = () => POST('getFeeds')
 
