@@ -1,0 +1,60 @@
+
+@import '../../sharedStyles//sharedConsts.scss';
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding-top: 120px;
+
+  .wrapper {
+    width: 60%;
+    background-color: #f1f2f6;
+    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.08);
+    border-radius: 5;
+    min-height: 350px;
+    padding: 50px;
+  }
+
+  .detailswrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    h1 {
+      color: #696969;
+      font-size: 15px;
+      font-family: $FONT_PRIMARY;
+    }
+  }
+
+  .details {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    width: 400px;
+
+    h1 {
+      color: #696969;
+      font-size: 15px;
+      font-family: $FONT_PRIMARY;
+    }
+
+    p {
+      color: #696969;
+      font-size: 15px;
+      font-family: $FONT_PRIMARY;
+    }
+  }
+
+  .avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    overflow: hidden;
+    img {
+      width: 100%;
+    }
+  }
+}

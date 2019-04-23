@@ -2,6 +2,7 @@
 
 .container {
   margin-bottom: 60px;
+  
   .containerInner {
     display: flex;
     justify-content: center;
@@ -10,7 +11,7 @@
       width: 60%;
       max-width: 1000px;
       margin-top: 30px;
-
+      animation: activate 1.2s ease;
       .featuredImage {
         width: 70%;
         img {
@@ -115,7 +116,7 @@
   justify-content: space-between;
 
   .optionsArea {
-    width: 4%;
+    width: 8%;
     display: flex;
     align-items: center;
     input {
@@ -123,7 +124,7 @@
       top: -5px;
       width: 33px;
       opacity: 0;
-      width:2%;
+      width:5%;
     }
   }
   
@@ -153,4 +154,13 @@
   font-family: $FONT_PRIMARY;
   font-size: 10px;
   font-style: italic;
+}
+
+@keyframes activate {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    transform: 1;
+  }
 }

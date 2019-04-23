@@ -186,7 +186,7 @@ export class CreateFeedForm extends React.Component {
 
            <div className={css.option}>
             <input type="file" onChange={this.handleFileChange} />
-            <FiImage style={{color: '#636e72', fontSize: '20px'}} />
+            <FiImage style={{color: '#636e72', fontSize: '20px', zIndex: '1'}} />
           </div>
           </div>
           {imageUloading? (

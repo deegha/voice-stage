@@ -9,6 +9,23 @@ class Nav extends React.PureComponent {
     moblieMenuOpen: false 
   }
 
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClickOutside);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside);
+  }
+
+  setWrapperRef = (node) => {
+    this.wrapperRef = node
+  }
+  handleClickOutside = (event) => {
+    if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+      this.setState({moblieMenuOpen: false})
+    }
+  }
+
   renderMenuItems = (auth) => {
     const items = <ul>
        {auth.authenticated && (
@@ -53,9 +70,11 @@ class Nav extends React.PureComponent {
     const { isMobile, auth } = this.props
     const {moblieMenuOpen} = this.state
     const clsMMenu = moblieMenuOpen?css.mMenuOpen:css.mMenuClose
+    const menu = isMobile? css.menuItemswrapperMobile: css.menuItemswrapper
+
 
     return(
-      <nav>
+      <nav ref={this.setWrapperRef}>
         <div className={css.mainMenu} onClick={this.togleMenu}>
           {auth.authenticated? (
             <img src={auth.user.photoURL} className={css.proPic} />
@@ -67,7 +86,7 @@ class Nav extends React.PureComponent {
            </div>
             )}
         </div>
-        <div className={clsMMenu}>
+        <div className={[clsMMenu, menu].join(' ')}>
           <div className={css.menuItems}>
           {this.renderMenuItems(auth)}
           </div>

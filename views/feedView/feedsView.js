@@ -113,7 +113,7 @@ export default class FeedsView extends React.PureComponent {
       
                 <div className={css.optionsArea}>
                   <input type="file" onChange={this.handleFileChange} />
-                  <FiImage style={{color: '#636e72', fontSize: '20px'}} />
+                  <FiImage style={{color: '#636e72', fontSize: '26px'}} />
                 </div>
               </div>
 

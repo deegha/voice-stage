@@ -236,9 +236,10 @@
   cursor: pointer;
 
   input {
-    width: 40px;
+    width: 60px;
     opacity: 0;
     cursor: pointer;
+    z-index: 2;
   }
 }
 
