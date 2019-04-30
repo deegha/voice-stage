@@ -77,11 +77,11 @@ class Header extends React.PureComponent {
               <Link prefetch href="/">
                 <a>
                   <img src={APP_LOG} className={clsLogo}/>
-                  {/* {!isMobile && ( */}
+                  {!isMobile && (
                   <h1 className={css.siteName}>
                     {APP_NAME}
                   </h1>
-                  {/* )} */}
+                  )}
                 </a>
               </Link>
             </div>

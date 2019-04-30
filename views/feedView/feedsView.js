@@ -48,11 +48,12 @@ export default class FeedsView extends React.PureComponent {
       comment: this.state.commentText,
       comments: [],
       media: {
-        url: await uploadImage(this.state.media.file),
-        type: this.state.media.type
+        url: this.state.media.file !== '' ? await uploadImage(this.state.media.file): '',
+        type: this.state.media.file !== '' ?this.state.media.type:''
       },
       createdAt: moment().unix(),
       auther: {
+        email: user.email,
         displayName: user.displayName,
         id: user.id,
         photoURL: user.photoURL
@@ -124,7 +125,12 @@ export default class FeedsView extends React.PureComponent {
                 <img src={media.url}  />
               </div>
             )}
-            {comments.map(comment => <CommentBox reply={reply} auth={auth} key={comment.id} comment={comment}/>)}
+            {comments.map(comment => <CommentBox 
+                                      width={width}
+                                      reply={reply} 
+                                      auth={auth} 
+                                      key={comment.id} 
+                                      comment={comment}/>)}
             
           </div>
         </div>

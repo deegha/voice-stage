@@ -12,8 +12,9 @@ export class Feed extends React.PureComponent {
   render() {
 
     const { feed, authUserId } = this.props
+    
     const liked = feed.likes.filter(like =>  like.id === authUserId)
-
+    console.log( liked !== undefined && liked.length > 0 && liked[0].likeId, "feed")
     return (
       <div className={css.container} key={feed.id}>
        
@@ -34,7 +35,12 @@ export class Feed extends React.PureComponent {
                     <a>{feed.auther.displayName} </a>
                   </Link>
                 </h2> 
-                <img src={feed.auther.photoURL} className={css.proImage} /> 
+                <Link href={`/profile?slug=${feed.auther.id}`}>
+                  <a>
+                  <img src={feed.auther.photoURL} className={css.proImage} /> 
+                  </a>
+                </Link>
+                
                 <span className={css.sepereator}>|</span> 
                 {moment.unix(feed.createdAt).fromNow()}
               

@@ -861,10 +861,47 @@
   resolved "https://registry.yarnpkg.com/@firebase/webchannel-wrapper/-/webchannel-wrapper-0.2.16.tgz#d9343a2c0b5cf3ffc2eeced590b367d6b66ac37c"
   integrity sha512-p5QPUrmag+C77l2S7jtLlixNyBGqgeQLknzZY9ck76ipAUFNk0uJEfHJiI1Tz2pEjB7XwmoovaDhGlQDvNb5vA==
 
+"@sendgrid/client@^6.3.0":
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/@sendgrid/client/-/client-6.3.0.tgz#25c34b11bec392ab43ca7e52fb35e4105fb00901"
+  integrity sha512-fTy8vRpA9Whtf8ULQr/0vkSZaQvGQ97rY5N5PrevKRtugJMsJqFMKO0pwzEWeqITSg71aMMTj57QTgw3SjZvnQ==
+  dependencies:
+    "@sendgrid/helpers" "^6.3.0"
+    "@types/request" "^2.0.3"
+    request "^2.81.0"
+
+"@sendgrid/helpers@^6.3.0":
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/@sendgrid/helpers/-/helpers-6.3.0.tgz#1b1798af22aa7a4c98257fab3dd2a6a6afd8b467"
+  integrity sha512-uTFcmhCDFg/2Uhz+z/cLwyLHH0UsblG49hKwdR7nKbWsGKWv4js7W32FlPdXqy2C/plTJ20vcPLgKM1m3F/MjQ==
+  dependencies:
+    chalk "^2.0.1"
+    deepmerge "^2.1.1"
+
+"@sendgrid/mail@^6.3.1":
+  version "6.3.1"
+  resolved "https://registry.yarnpkg.com/@sendgrid/mail/-/mail-6.3.1.tgz#e5003af167ca4dd358f04075aad4cfc30cef6c34"
+  integrity sha512-5zIeAV9iU+0hQkrOQ/D4RB2MfpK+lNbOortIfQdCh95aMDF/TRc9WB8FGNhmQrx9YMuJTms5eiBklF0Fi/dbVg==
+  dependencies:
+    "@sendgrid/client" "^6.3.0"
+    "@sendgrid/helpers" "^6.3.0"
+
+"@types/caseless@*":
+  version "0.12.2"
+  resolved "https://registry.yarnpkg.com/@types/caseless/-/caseless-0.12.2.tgz#f65d3d6389e01eeb458bd54dc8f52b95a9463bc8"
+  integrity sha512-6ckxMjBBD8URvjB6J3NcnuAn5Pkl7t3TizAg+xdlzzQGSPSmBcXf8KoIH0ua/i+tio+ZRUHEXp0HEmvaR4kt0w==
+
 "@types/chai@^3.4.34":
   version "3.5.2"
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-3.5.2.tgz#c11cd2817d3a401b7ba0f5a420f35c56139b1c1e"
   integrity sha1-wRzSgX06QBt7oPWkIPNcVhObHB4=
+
+"@types/form-data@*":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@types/form-data/-/form-data-2.2.1.tgz#ee2b3b8eaa11c0938289953606b745b738c54b1e"
+  integrity sha512-JAMFhOaHIciYVh8fb5/83nmuO/AHwmto+Hq7a9y8FzLDcC1KCU344XDOMEmahnrTFlHjgh4L0WJFczNIX2GxnQ==
+  dependencies:
+    "@types/node" "*"
 
 "@types/minimatch@^2.0.29":
   version "2.0.29"
@@ -876,10 +913,30 @@
   resolved "https://registry.yarnpkg.com/@types/mkdirp/-/mkdirp-0.3.29.tgz#7f2ad7ec55f914482fc9b1ec4bb1ae6028d46066"
   integrity sha1-fyrX7FX5FEgvybHsS7GuYCjUYGY=
 
+"@types/node@*":
+  version "11.13.8"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.13.8.tgz#e5d71173c95533be9842b2c798978f095f912aab"
+  integrity sha512-szA3x/3miL90ZJxUCzx9haNbK5/zmPieGraZEe4WI+3srN0eGLiT22NXeMHmyhNEopn+IrxqMc7wdVwvPl8meg==
+
+"@types/request@^2.0.3":
+  version "2.48.1"
+  resolved "https://registry.yarnpkg.com/@types/request/-/request-2.48.1.tgz#e402d691aa6670fbbff1957b15f1270230ab42fa"
+  integrity sha512-ZgEZ1TiD+KGA9LiAAPPJL68Id2UWfeSO62ijSXZjFJArVV+2pKcsVHmrcu+1oiE3q6eDGiFiSolRc4JHoerBBg==
+  dependencies:
+    "@types/caseless" "*"
+    "@types/form-data" "*"
+    "@types/node" "*"
+    "@types/tough-cookie" "*"
+
 "@types/rimraf@^0.0.28":
   version "0.0.28"
   resolved "https://registry.yarnpkg.com/@types/rimraf/-/rimraf-0.0.28.tgz#5562519bc7963caca8abf7f128cae3b594d41d06"
   integrity sha1-VWJRm8eWPKyoq/fxKMrjtZTUHQY=
+
+"@types/tough-cookie@*":
+  version "2.3.5"
+  resolved "https://registry.yarnpkg.com/@types/tough-cookie/-/tough-cookie-2.3.5.tgz#9da44ed75571999b65c37b60c9b2b88db54c585d"
+  integrity sha512-SCcK7mvGi3+ZNz833RRjFIxrn4gI1PPR3NtuIS+6vMkvmsGjosqTJwRt5bAEFLRz+wtJMWv8+uOnZf2hi2QXTg==
 
 "@webassemblyjs/ast@1.7.11":
   version "1.7.11"
@@ -1777,7 +1834,7 @@ cave@2.0.0:
     lodash "^2.4.1"
     minimist "^1.1.0"
 
-chalk@2.4.2, chalk@^2.0.0, chalk@^2.3.0, chalk@^2.4.1, chalk@^2.4.2:
+chalk@2.4.2, chalk@^2.0.0, chalk@^2.0.1, chalk@^2.3.0, chalk@^2.4.1, chalk@^2.4.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
   integrity sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==
@@ -2355,9 +2412,9 @@ css@^2.1.0, css@^2.2.0:
     source-map-resolve "^0.5.2"
     urix "^0.1.0"
 
-"css@git+https://github.com/pocketjoso/css.git":
+"css@https://github.com/pocketjoso/css.git":
   version "2.2.1"
-  resolved "git+https://github.com/pocketjoso/css.git#8ddea7e3cbc0a183ecf694a7a5fbc84326893893"
+  resolved "https://github.com/pocketjoso/css.git#8ddea7e3cbc0a183ecf694a7a5fbc84326893893"
   dependencies:
     inherits "^2.0.1"
     source-map "^0.1.38"
@@ -2455,6 +2512,11 @@ deep-extend@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/deep-extend/-/deep-extend-0.6.0.tgz#c4fa7c95404a17a9c3e8ca7e1537312b736330ac"
   integrity sha512-LOHxIOaPYdHlJRtCQfDIVZtfw/ufM8+rVj649RIHzcm/vGwQRXFt6OPqIFWsm2XEMrNIEtWR64sY1LEKD2vAOA==
+
+deepmerge@^2.1.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-2.2.1.tgz#5d3ff22a01c00f645405a2fbc17d0778a1801170"
+  integrity sha512-R9hc1Xa/NOBi9WRVUWg19rl1UB7Tt4kuPd+thNJgFZoxXsTz7ncaPaeIm+40oSGuP33DfMb4sZt1QIGiJzC4EA==
 
 define-properties@^1.1.2:
   version "1.1.3"

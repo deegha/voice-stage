@@ -7,5 +7,6 @@ export const firebaseConfig = {
   messagingSenderId: '986660355532',
 }
 
+export const sc = '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'
 
 

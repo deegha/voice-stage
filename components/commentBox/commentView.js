@@ -59,11 +59,12 @@ export class CommentView extends React.Component {
           comment: this.state.commentText,
           comments: [],
           media: {
-            url: await uploadImage(this.state.media.file),
-            type: this.state.media.type
+            url: this.state.media.file !== '' ? await uploadImage(this.state.media.file): '',
+            type: this.state.media.file !== '' ?this.state.media.type:''
           },
           createdAt: moment().unix(),
           auther: {
+            email: user.email,
             displayName: user.displayName,
             id: user.id,
             photoURL: user.photoURL
@@ -81,12 +82,15 @@ export class CommentView extends React.Component {
   }
 
   render () {
-    const { comment, auth, reply } = this.props
+    const { comment, auth, reply, width } = this.props
     const { commentText, replyBox, media } = this.state
   
     const writeCommentCls = replyBox?[css.activeClass,css.writeComment].join(' '):css.writeComment
 
     const styleViewCat =  comment.parent === null?{borderLeft:'none'}:{borderLeft:'1px solid #ced6e0', marginLeft: '2px'} 
+
+    const replyBoxWidth= width<700? '95%': '67%'
+
     return (
       <div className={css.commentView} style={styleViewCat}>
         <div>
@@ -119,7 +123,7 @@ export class CommentView extends React.Component {
           )}
         </div>
         {replyBox && (
-          <div className={writeCommentCls}>
+          <div className={writeCommentCls} style={{width:replyBoxWidth}}>
             <div className={css.textAreaWrapper}>
               <textarea 
                 value={commentText}

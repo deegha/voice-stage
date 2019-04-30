@@ -30,7 +30,7 @@ class Nav extends React.PureComponent {
     const items = <ul>
        {auth.authenticated && (
         <li>
-          <Link href="/profile">
+          <Link href={`/profile?slug=${auth.user.id}`}>
             <a>Profile</a>
           </Link>
         </li>

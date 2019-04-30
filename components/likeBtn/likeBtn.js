@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { voteUpAction,voteDownAction } from '../../actions/feedsActions'
-import { IoMdShare, IoIosHeart, IoIosHeartEmpty,  } from 'react-icons/io'
+import { GoArrowUp,GoArrowDown, IoIosHeart, IoIosHeartEmpty,  } from 'react-icons/go'
 
 import css from './styles.scss'
 class LikeBtn extends React.PureComponent {
@@ -57,9 +57,9 @@ class LikeBtn extends React.PureComponent {
       <div className={css.likeBtnContainer}>
         <div className={css.likeBtn} onClick={this.clickLike(feedId)}>
           {liked? (
-            <IoIosHeart style={{color:'#d63031'}}/>
+            <GoArrowUp style={{color:'#d63031'}}/>
           ): (
-            <IoIosHeartEmpty />
+            <GoArrowUp style={{color:'#7f8c8d'}} />
           )}
         </div>
         <span className={css.amount}>{likeCount > 0 && likeCount}</span>

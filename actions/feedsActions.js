@@ -93,6 +93,7 @@ export const voteDownAction = (postID, likeId) => ( dispatch, getState ) => {
     postID
   }))
 
+  console.log(likeId,"likeId")
   removeLike({likeId: likeId})
 
 }
