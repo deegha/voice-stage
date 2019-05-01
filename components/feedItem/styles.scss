@@ -12,13 +12,19 @@
 
 
   .containerMedia {
-    img {
-      width: 100%;
-      resize: contain;
-      box-shadow: 0 2px 16px 0 #00000033;
-      margin-bottom: 20px;
-      border-radius: 5px;
-    }
+
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    background-repeat: no-repeat; 
+
+    // img {
+    //   width: 100%;
+    //   resize: contain;
+    //   box-shadow: 0 2px 16px 0 #00000033;
+    //   margin-bottom: 20px;
+    //   border-radius: 5px;
+    // }
   }
 
   .containerDetails {

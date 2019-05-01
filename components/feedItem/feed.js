@@ -56,8 +56,8 @@ export class Feed extends React.PureComponent {
             {feed.media.url !== '' && (
               <Link href={`feed?slug=${feed.id}`}>
                 <a>
-                  <div className={css.containerMedia}>
-                    <img src={feed.media.url} />
+                  <div className={css.containerMedia} style={{backgroundImage: `url(${feed.media.url})`}}>
+                    {/* <img src={feed.media.url} /> */}
                   </div>
                 </a>
               </Link>

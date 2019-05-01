@@ -97,6 +97,7 @@ export const uploadImage = async (file) => {
     let response = await request
     .post(CLOUDINARY_UPLOAD_URL)
     .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+    .field('folder', 'statedee')
     .field('file', file)
 
     if(response.body){

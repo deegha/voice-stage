@@ -1,6 +1,6 @@
-export const APP_NAME = "STAGE YOUR VOICE"
+export const APP_NAME = "statedee.com"
 export const APP_LOG = `https://res.cloudinary.com/duqpgdc9v/image/upload/v1555753860/logo_transparent.png`
-export const APP_DESCRIPTION = `stage your voice gives you a stage to express your thoughts and ideas to the public.`
+export const APP_DESCRIPTION = `statedee gives you a stage to express your thoughts and ideas to the public.`
 export const APP_BASE_URL = 'https://stage-your-voice.herokuapp.com'
 
 export const CLOUDINARY_UPLOAD_PRESET = 'x8pebuvf'

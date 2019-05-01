@@ -5,7 +5,7 @@ import {tags} from '../../components/tags'
 import { FilterTab, Modal, GoogleBtn, FacebookBtn } from '../../components'
 import { CLOUDINARY_UPLOAD_PRESET, CLOUDINARY_UPLOAD_URL, POST_STATUS }  from '../../config/config'
 import moment from 'moment'
-
+// import LinkPreview from "mrn-link-preview"
 import { makeid, uploadImage } from '../../services/helper'
 // import request from 'superagent'
 export class CreateFeedForm extends React.Component {
@@ -66,7 +66,8 @@ export class CreateFeedForm extends React.Component {
     }
   }
 
-  handleTitleChange = (e) => {
+  handleTitleChange = (e) => { console.log('changed')
+ 
     if(e.target.value.length > 100) {
       this.setState({maxCharactorLenght: true, openText: true})
     }else {
