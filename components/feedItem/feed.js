@@ -14,7 +14,6 @@ export class Feed extends React.PureComponent {
     const { feed, authUserId } = this.props
     
     const liked = feed.likes.filter(like =>  like.id === authUserId)
-    console.log( liked !== undefined && liked.length > 0 && liked[0].likeId, "feed")
     return (
       <div className={css.container} key={feed.id}>
        
