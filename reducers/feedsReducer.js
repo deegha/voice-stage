@@ -47,6 +47,11 @@ export const feedsReducer = (state=initialState, action) => {
         ...state,
         creating: false
       }
+    case Actions.DELETE_FEED_SUCCESS:
+      return {
+        ...state,
+        feeds: state.feeds.filter(feed => feed.id !== action.id)
+      }
     default:
       return state
   }

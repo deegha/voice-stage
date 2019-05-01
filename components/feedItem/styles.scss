@@ -26,12 +26,28 @@
     //   border-radius: 5px;
     // }
   }
+  .videoPostHandler {
+    font-family: $FONT_PRIMARY;
+    font-size: 12px;
+    color: $PRIMARY_COLOR;
+  }
+
+  .containerMediaVideo {
+
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat; 
+    
+    
+  }
 
   .containerDetails {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     flex-direction: column; 
+
+    
     .imageWrapper {
    
       display: flex;
@@ -43,6 +59,15 @@
     }
     .detailWrapper {
       width: 100%;
+
+
+      .feedHeader {
+        justify-content: space-between;
+        display: flex;
+        align-items: center;
+            margin: 0 0 20px 0; 
+      }
+    
 
       a {
         text-decoration: none;
@@ -106,10 +131,6 @@
         .sepereator {
           margin: 0 10px 0 5px;
         }
-        
-        margin: 0 0 20px 0;
-
-        
       }
       p {
         font-family: $FONT_SECONDARY;
@@ -145,6 +166,52 @@
   }
 }
 
+.menuArea {
+  cursor: pointer;
+  height: 30px;
+  width: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .menuDot {
+    width: 4px;
+    height: 4px;
+    border-radius: 5px;
+    background-color: $PRIMARY_COLOR;
+    margin-bottom: 2px;
+    
+  }
+}
+.closeMenu {
+  display: none;
+}
+
+.openMenu {
+  background-color: #fff;
+  border-radius: 5px;
+ 
+  animation: openMenu .2s ease;
+  display: block;
+  box-shadow: 0 2px 16px 0 #00000033;
+  width: 100px;
+  position: absolute;
+  opacity: 0.98;
+  right: 43%;
+
+  ul {
+    padding: 0;
+    margin: 0;
+    li {
+      list-style: none;
+      font-style: $FONT_SECONDARY;
+      color: $PRIMARY_COLOR;
+      cursor: pointer;
+      padding: 5px;
+      text-align: center;
+    }
+  }
+}
 
 
 @keyframes activate {

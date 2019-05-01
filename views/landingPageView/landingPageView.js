@@ -7,7 +7,7 @@ import { CreateFeedForm } from './createFeedForm'
 export class LandingPageView extends React.Component {
 
   render () {
-    const { window, feeds, auth, createFeed, signUp, comments:{comments, error} } = this.props
+    const { deleteFeed, window, feeds, auth, createFeed, signUp, comments:{comments, error} } = this.props
 
     let ics = css.containerInner
 
@@ -34,7 +34,7 @@ export class LandingPageView extends React.Component {
             createFeed={createFeed}/>
           <div className={ics}>
             <div className={css.wrapperInner}>
-              {feeds.map(feed => <Feed authUserId={auth.user.id} key={feed.id} feed={feed} />)}
+              {feeds.map(feed => <Feed deleteFeed={deleteFeed} authUserId={auth.user.id} key={feed.id} feed={feed} />)}
             </div>
             <div className={css.wrapperInnerRght}>
               <div className={css.topCommentSection}>

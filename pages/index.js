@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getFeeds, createFeed } from '../actions/feedsActions'
+import { getFeeds, createFeed, deleteFeed } from '../actions/feedsActions'
 import { loadLatestComments } from '../actions/comentsActions'
 import  {LandingPageView}  from '../views/landingPageView/landingPageView'
 import { signUp } from '../actions/authUserActions'
@@ -14,10 +14,11 @@ class LandingPage extends React.Component {
 
   render() {
 
-    const { window, comments, signUp, auth, feeds:{feeds, loading, error, errorMessage}, createFeed } = this.props
+    const { deleteFeed, window, comments, signUp, auth, feeds:{feeds, loading, error, errorMessage}, createFeed } = this.props
 
     return (
       <LandingPageView 
+        deleteFeed={deleteFeed}
         window={window}
         comments={comments} 
         signUp={signUp} 
@@ -32,7 +33,8 @@ const mapDispatchToProps = (dispatch) => ({
   getFeeds: () => dispatch(getFeeds()),
   createFeed:(feed) => dispatch(createFeed(feed)),
   signUp: (user, provider) => dispatch(signUp(user, provider)),
-  loadComments: () => dispatch(loadLatestComments())
+  loadComments: () => dispatch(loadLatestComments()),
+  deleteFeed: (id) => dispatch(deleteFeed(id))
 })
 
 const mapStateToProps = ({feeds, auth, comments, window}) => ({

@@ -5,6 +5,10 @@ import moment from 'moment'
 import { FiImage } from 'react-icons/fi'
 import css from './styles.scss'
 
+
+import ReactPlayer from 'react-player'
+import IntersectionVisible    from 'react-intersection-visible'
+
 export default class FeedsView extends React.PureComponent {
 
   state = {
@@ -82,10 +86,19 @@ export default class FeedsView extends React.PureComponent {
           title={feed.title !==''?`${feed.title} - ${APP_NAME}`:APP_NAME} />
         <div className={css.containerInner}>
           <div className={clWrapper}>
-            {feed.media && feed.media.url !== '' && (
+            {feed.media && feed.media.url !== '' && feed.media.type == 1 && (
             <div className={css.featuredImage}>
               <img src={feed.media.url} />
             </div>  
+            )}
+            {feed.media.url !== '' && feed.media.type == 2 && (
+              <div className={css.containerMediaVideo}>
+                <ReactPlayer 
+                  playing
+                  controls={true} 
+                  url={feed.media.url} 
+                  width={'100%'} />
+              </div>
             )}
             <h1>{feed.title}</h1>
             {feed.text !== '' && (
@@ -125,6 +138,7 @@ export default class FeedsView extends React.PureComponent {
                 <img src={media.url}  />
               </div>
             )}
+             
             {comments.map(comment => <CommentBox 
                                       width={width}
                                       reply={reply} 

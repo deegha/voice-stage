@@ -44,13 +44,10 @@ class Header extends React.PureComponent {
   }
   
   updateWindowDimensions = () => {
-    console.log("setting listners")
-    console.log( window.innerWidth)
     this.props.setDim({ width: window.innerWidth, height: window.innerHeight })
   }
 
   signOut = () => {
-    console.log("clicked")
     Fire().then(firebase => firebase.auth().signOut().then(function() {
       console.log('Signed Out');
     }, function(error) {

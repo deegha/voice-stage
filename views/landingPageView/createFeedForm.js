@@ -7,6 +7,7 @@ import { CLOUDINARY_UPLOAD_PRESET, CLOUDINARY_UPLOAD_URL, POST_STATUS }  from '.
 import moment from 'moment'
 // import LinkPreview from "mrn-link-preview"
 import { makeid, uploadImage } from '../../services/helper'
+import ReactPlayer from 'react-player'
 // import request from 'superagent'
 export class CreateFeedForm extends React.Component {
 
@@ -153,17 +154,29 @@ export class CreateFeedForm extends React.Component {
 
 
   handleFileChange = (event) => {
-    console.log(event.target.files)
+    
     const file = event.target.files[0]
     const url = event.target.files.length > 0 ?URL.createObjectURL(event.target.files[0]): ""
-    this.setState(preState=> ({
-      ...preState,
-      media: {
-        url,
-        type: 1,
-        file
-      }
-    }))
+
+    console.log(file.type)
+    console.log(file.type.indexOf("image"))
+    let type = 0
+    if(file.type.indexOf("image") != -1) {
+      type = 1
+    }else if(file.type.indexOf("video") != -1)  {
+      type = 2 
+    }
+    
+    if(type !== 0) {
+      this.setState(preState=> ({
+        ...preState,
+        media: {
+          url,
+          type: type,
+          file
+        }
+      }))
+    }
   }
 
   render() {
@@ -205,6 +218,12 @@ export class CreateFeedForm extends React.Component {
           {media.url !== '' && media.type === 1 && (
             <div className={css.feedImage}>
               <img src={media.url} />
+            </div>
+          )}
+
+          {media.url !== '' && media.type === 2 && (
+            <div className={css.feedImage}>
+              <ReactPlayer url={media.url} playing />
             </div>
           )}
           {hasContent && (
