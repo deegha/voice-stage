@@ -75,7 +75,7 @@ class Header extends React.PureComponent {
             <div className={css.headerLeft}>
               <Link prefetch href="/">
                 <a>
-                  <img src={APP_LOG} className={clsLogo}/>
+                  <img src={APP_LOG} alt={"statedee logo"} className={clsLogo}/>
                   {!isMobile && (
                   <h1 className={css.siteName}>
                     {APP_NAME}

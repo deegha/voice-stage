@@ -75,7 +75,7 @@ export class Feed extends React.PureComponent {
                   </h2> 
                   <Link href={`/profile?slug=${feed.auther.id}`}>
                     <a>
-                    <img src={feed.auther.photoURL} className={css.proImage} /> 
+                    <img alt={"profile picture"} src={feed.auther.photoURL} className={css.proImage} /> 
                     </a>
                   </Link>
                   
