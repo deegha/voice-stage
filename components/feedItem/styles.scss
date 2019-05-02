@@ -213,6 +213,46 @@
   }
 }
 
+.reportFormWrapper {
+  width: 500px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.reportFormTitle {
+  font-family: $FONT_SECONDARY;
+  font-size: 15px;
+  color: $PRIMARY_COLOR
+}
+
+.reportFormWording {
+  font-family: $FONT_SECONDARY;
+  font-size: 12px;
+  color: $PRIMARY_COLOR
+}
+
+.reportForm {
+  .reportFormTitl {
+    font-family: $PRIMARY_COLOR;
+    font-size: 18px;
+    color: $PRIMARY_COLOR
+  }
+  .reportFormController {
+    margin: 20px 0;
+    font-family: $PRIMARY_COLOR;
+    font-size: 15px;
+    cursor: pointer;
+  }
+}
+
+.closeReport {
+  position: relative;
+  left: 46%;
+  cursor: pointer;
+}
 
 @keyframes activate {
   0% {

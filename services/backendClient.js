@@ -233,6 +233,26 @@ export const deletePost = async (id) => {
   
 }
 
+export const reportPost = async (reportedBy, feedId, reason) => {
+  try {
+    const firebase = await Fire()
+    const db = firebase.firestore()
+    await db.collection("feeds").doc(feedId).update({
+      status: 2
+    })
+
+    await db.collection("reported").add({
+      reportedBy,
+      feedId,
+      reason
+    })
+
+  }catch(err) {
+    console.log('error in deleting post')
+  }
+  
+}
+
 export const fetchFeeds = () => POST('getFeeds')
 
 export const getFeedById = (feedId) => POST('getFeedById', {"feedId": feedId}) 

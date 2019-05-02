@@ -30,7 +30,7 @@ class LikeBtn extends React.PureComponent {
   clickLike = (id) => () => {
    
     if(!this.props.authenticated) {
-      this.props.login()
+      this.props.openLoginModal()
     }else {
 
       if(this.state.liked) {

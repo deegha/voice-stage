@@ -1,9 +1,10 @@
 const withSass = require('@zeit/next-sass')
+const withImages = require('next-images')
 const withCSS = require('@zeit/next-css')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CriticalPlugin = require('webpack-plugin-critical').CriticalPlugin
 
-module.exports = withCSS(withSass({
+module.exports =withImages(withCSS(withSass({
   cssModules: true,
   cssLoaderOptions: {
     importLoaders: 1,
@@ -33,6 +34,6 @@ module.exports = withCSS(withSass({
 
     return config
   }
-}))
+})))
 
 //target: 'serverless',

@@ -265,6 +265,18 @@
   }
 }
 
+.posting {
+  animation: activate .6s ease-out ;
+  background-color: #ED4C67;
+  color: #fff;
+  font-weight: 800;
+  font-size: 12px;
+  padding: 10px;
+  border-radius: 2px;
+  font-family: $FONT_PRIMARY; 
+  letter-spacing: 1px;
+}
+
 
 @keyframes activate {
   0% {

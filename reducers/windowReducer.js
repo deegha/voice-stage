@@ -1,7 +1,7 @@
 import * as Actions from '../actions/windowActions'
 
 const initialState = {
-  width: 0,
+  width: 800,
   height: 0,
   isMobile: false
 }

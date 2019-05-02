@@ -11,6 +11,7 @@ import propTypes from 'prop-types'
 import {APP_NAME, APP_LOG} from '../../config/config'
 import { Head, Nav } from '../'
 import {Fire} from '../../services/firebase'
+
 class Header extends React.PureComponent {
 
 
@@ -68,6 +69,7 @@ class Header extends React.PureComponent {
         url={url}
         description={description}
         title={title} />
+        
         <div className={css.container}>
           <div className={css.wrapper}>
             <div className={css.headerLeft}>

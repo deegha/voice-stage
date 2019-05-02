@@ -2,13 +2,11 @@ import css  from './styles.scss'
 import { FiImage } from 'react-icons/fi'
 
 import {tags} from '../../components/tags'
-import { FilterTab, Modal, GoogleBtn, FacebookBtn } from '../../components'
-import { CLOUDINARY_UPLOAD_PRESET, CLOUDINARY_UPLOAD_URL, POST_STATUS }  from '../../config/config'
+import { FilterTab } from '../../components'
+import { POST_STATUS }  from '../../config/config'
 import moment from 'moment'
-// import LinkPreview from "mrn-link-preview"
 import { makeid, uploadImage } from '../../services/helper'
 import ReactPlayer from 'react-player'
-// import request from 'superagent'
 export class CreateFeedForm extends React.Component {
 
   state = {
@@ -43,6 +41,7 @@ export class CreateFeedForm extends React.Component {
       step: 1,
       selectedTags: [],
       showLogin: false,
+      openText: false,
       media: {
         url: '',
         type: null,
@@ -50,10 +49,6 @@ export class CreateFeedForm extends React.Component {
       }
     })
   }
-
-  openLoginModal = () => {
-    this.setState({showLogin: true})
-  } 
 
   changeHeight = () => {
     const chars_per_row = 100;
@@ -67,10 +62,10 @@ export class CreateFeedForm extends React.Component {
     }
   }
 
-  handleTitleChange = (e) => { console.log('changed')
+  handleTitleChange = (e) => { 
  
     if(e.target.value.length > 100) {
-      this.setState({maxCharactorLenght: true, openText: true})
+      this.setState({maxCharactorLenght: true})
     }else {
       this.setState({title: e.target.value, maxCharactorLenght: false}, this.changeHeight())
     } 
@@ -106,7 +101,7 @@ export class CreateFeedForm extends React.Component {
 
     if(title !== '' || media.url !== '') {
       if(!authenticated) {
-        this.openLoginModal()
+        this.props.openLoginModal()
         return false
       }
 
@@ -158,14 +153,19 @@ export class CreateFeedForm extends React.Component {
     const file = event.target.files[0]
     const url = event.target.files.length > 0 ?URL.createObjectURL(event.target.files[0]): ""
 
-    console.log(file.type)
-    console.log(file.type.indexOf("image"))
     let type = 0
     if(file.type.indexOf("image") != -1) {
       type = 1
     }else if(file.type.indexOf("video") != -1)  {
       type = 2 
     }
+
+    console.log(file)
+
+    if(type == 1 && file.size > 10485760) {
+      console.log('file too large')
+      return false
+    } 
     
     if(type !== 0) {
       this.setState(preState=> ({
@@ -177,6 +177,10 @@ export class CreateFeedForm extends React.Component {
         }
       }))
     }
+  }
+
+  onMainTextFocus = () => {
+    this.setState({openText: true})
   }
 
   render() {
@@ -194,6 +198,7 @@ export class CreateFeedForm extends React.Component {
         <div className={css.createFeedConainer}>
           <div className={css.textAreaWrapper}>
           <textarea 
+            onFocus={this.onMainTextFocus}
             value={title}
             onChange={this.handleTitleChange}
             style={{height: textAreaHeight}} placeholder={'Stage your voice. . .'} />
@@ -204,11 +209,11 @@ export class CreateFeedForm extends React.Component {
           </div>
           </div>
           {imageUloading? (
-            <div>Posting</div>
+            <div className={css.posting}>Posting</div>
           ): (
             <div className={css.buttonArea} onClick={this.startDiscussion}>
             <div className={!hasContent?css.buttonCreateDis:css.buttonCreate}>
-            {!hasContent?'...':'Stage'}</div>
+            {!hasContent?'...':'Post'}</div>
           </div>
           )}
          
@@ -226,7 +231,7 @@ export class CreateFeedForm extends React.Component {
               <ReactPlayer url={media.url} playing />
             </div>
           )}
-          {hasContent && (
+          {openText && (
             <div className={css.optionsBarTags}>
             <div>#addATag:</div>
             {tags.map( tag => (
@@ -245,7 +250,7 @@ export class CreateFeedForm extends React.Component {
           </div>
         </div>
 
-        {hasContent && (
+        {openText && (
           <div className={css.secondForm}>
             <textarea 
               value={text}
@@ -257,14 +262,7 @@ export class CreateFeedForm extends React.Component {
           </div>
         )}
         
-        <Modal visible={showLogin}>
-          <div className={css.loginContainer}>
-            <h3>Login in to continue</h3>
-            <FacebookBtn signUp={this.props.signUp} />
-            <GoogleBtn signUp={this.props.signUp}/>
-            <div className={css.closeBtn}>Close</div>
-          </div>
-        </Modal>
+       
       </div>
     )
   }

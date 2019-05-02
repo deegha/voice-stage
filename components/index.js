@@ -15,6 +15,7 @@ import { Modal } from './modal/modal'
 import { CommentBox } from './commentBox/commentBox'
 import LikeBtn  from './likeBtn/likeBtn'
 import { TopComments } from './topComments/topComments'
+import { CreateNotification } from './notificatoin/notificationsComponent'
 
 export {
   Head,
@@ -29,5 +30,6 @@ export {
   Modal,
   CommentBox,
   LikeBtn,
-  TopComments
+  TopComments,
+  CreateNotification
 }

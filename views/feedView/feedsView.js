@@ -1,4 +1,4 @@
-import { Header, FilterTab, CommentBox } from '../../components'
+import { Header, FilterTab, CommentBox, Modal, GoogleBtn, FacebookBtn  } from '../../components'
 import { APP_BASE_URL, APP_NAME, APP_LOG } from '../../config/config'
 import { makeid, uploadImage } from '../../services/helper'
 import moment from 'moment'
@@ -13,11 +13,19 @@ export default class FeedsView extends React.PureComponent {
 
   state = {
     commentText: '',
+    showLogin: false,
     textAreaHeight: 20,
     media: {
       url: '',
       type: null,
       file: ''
+    }
+  }
+
+  componentDidUpdate (preState) {
+    const { authenticated } = this.props.auth
+    if( authenticated && this.state.showLogin ) {
+      this.setState({showLogin: false})
     }
   }
 
@@ -40,35 +48,47 @@ export default class FeedsView extends React.PureComponent {
   }
 
   addComment = async () => {
-    const { auth:{user}, feed } = this.props
+    const { auth:{user, authenticated}, feed } = this.props
 
-    const id = makeid(10)
+    if(!authenticated) {
+      this.openLoginModal() 
+    }else {
+      const id = makeid(10)
 
-    const newComment = {
-      feedId: feed.id,
-      id: id ,
-      parent: null,
-      superParent: id,
-      comment: this.state.commentText,
-      comments: [],
-      media: {
-        url: this.state.media.file !== '' ? await uploadImage(this.state.media.file): '',
-        type: this.state.media.file !== '' ?this.state.media.type:''
-      },
-      createdAt: moment().unix(),
-      auther: {
-        email: user.email,
-        displayName: user.displayName,
-        id: user.id,
-        photoURL: user.photoURL
+      const newComment = {
+        feedId: feed.id,
+        id: id ,
+        parent: null,
+        superParent: id,
+        comment: this.state.commentText,
+        comments: [],
+        media: {
+          url: this.state.media.file !== '' ? await uploadImage(this.state.media.file): '',
+          type: this.state.media.file !== '' ?this.state.media.type:''
+        },
+        createdAt: moment().unix(),
+        auther: {
+          email: user.email,
+          displayName: user.displayName,
+          id: user.id,
+          photoURL: user.photoURL
+        }
       }
-    }
-
-    this.setState({replyBox:false, 
-      commentText: '', media: {}})
-    
-    this.props.addComment(newComment)  
+  
+      this.setState({replyBox:false, 
+        commentText: '', media: {}})
+      
+      this.props.addComment(newComment)
+    }  
   }
+
+  openLoginModal = () => {
+    this.setState({showLogin: true})
+  } 
+
+  closeLoginModal = () => {
+    this.setState({showLogin: false})
+  } 
 
   render() {
     const { feed, auth, comments, reply, window:{width} } = this.props
@@ -148,6 +168,15 @@ export default class FeedsView extends React.PureComponent {
             
           </div>
         </div>
+
+         <Modal visible={this.state.showLogin}>
+          <div className={css.loginContainer}>
+            <h3>Login in to continue</h3>
+            <FacebookBtn signUp={this.props.signUp} />
+            <GoogleBtn signUp={this.props.signUp}/>
+            <div className={css.closeBtn} onClick={this.closeLoginModal}>Close</div>
+          </div>
+        </Modal>
       </div>
     )
   }
