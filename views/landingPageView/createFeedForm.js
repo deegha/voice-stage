@@ -107,6 +107,7 @@ export class CreateFeedForm extends React.Component {
 
       const feed = {
         id : makeid(10),
+        type: 1,
         auther: {
           id: user.id,
           photoURL: user.photoURL,
