@@ -14,11 +14,11 @@ import styles from '../sharedStyles/styles.scss'
 
 class MyApp extends App {
 
-  // componentDidMount() {
-  //   Router.onRouteChangeComplete = url => {
-  //     trackPageView(url)
-  //   }
-  // }
+  componentDidMount() {
+    Router.onRouteChangeComplete = url => {
+      trackPageView(url)
+    }
+  }
 
   render () {
     const {Component, pageProps, reduxStore} = this.props
