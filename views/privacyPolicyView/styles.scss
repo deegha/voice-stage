@@ -1,3 +1,5 @@
+@import '../../sharedStyles//sharedConsts.scss';
+
 .container {
   display: flex;
   justify-content: center;
@@ -9,19 +11,20 @@
     h1 {
       color: #00bcd4;
       color: #00bcd4;
-      font-family: 'inter regular';
+      font-family: $FONT_PRIMARY;
     }
 
     h2 {
       color: #2d3436;
-      font-family: 'inter regular';
+      font-family: $FONT_SECONDARY;
       font-weight: 100;
     }
 
     p {
       color: #636e72;
-      font-family: 'inter regular';
-      letter-spacing: 1px;
+      font-family: $FONT_PRIMARY;
+      letter-spacing: 1.5px;
+      line-height: 1.6;
       font-size: 15px;
     }
   }

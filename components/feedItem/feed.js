@@ -162,8 +162,11 @@ export class Feed extends React.PureComponent {
                   feedId={feed.id} />
               </div>
               <div className={css.icon}>
+              <Link href={`feed?slug=${feed.id}`}>
+                <a style={{position:'relative', top: '3px'}}>  
                 <MdComment  style={{color:'#0984e3'}}  />
-                <span className={css.amount}>123</span>
+                </a>
+              </Link>
               </div>
               <div className={css.icon}>
                 <FacebookShareButton url={`${APP_BASE_URL}/feed?slug=${feed.id}`}>
