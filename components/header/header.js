@@ -45,7 +45,7 @@ class Header extends React.PureComponent {
   }
   
   updateWindowDimensions = () => {
-    this.props.setDim({ width: window.innerWidth, height: window.innerHeight })
+    this.props.setDim({ width: window.screen.width, height: window.innerHeight })
   }
 
   signOut = () => {
