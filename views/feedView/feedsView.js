@@ -93,7 +93,7 @@ export default class FeedsView extends React.PureComponent {
   render() {
     const { feed, auth, comments, reply, window:{width}, feeds } = this.props
     const { commentText, textAreaHeight, media} = this.state
-
+    console.log(width)
     const clWrapper = width<700?css.wrapperMobile:css.wrapper
     const sideCls = width<700?css.sideMobile:css.side
     const clWriteComment = width<700?css.writeCommentMobile:css.writeComment
