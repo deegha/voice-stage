@@ -6,16 +6,16 @@
   .containerInner {
     display: flex;
     justify-content: center;
-    padding-top: 30px;
-    width: 90%;
+    padding-top: 10px;
+    width: 100%;
     .wrapper {
-      width: 70%;
+      width: 60%;
       max-width: 1000px;
       
       animation: activate 1.2s ease;
-
       background-color: #ffffff;
       padding: 10px;
+      padding-bottom: 100px;
       border-radius: 5px;
 
       .featuredImage {
@@ -26,6 +26,7 @@
       }
 
       h1 {
+        font-size: 18px;
         font-family: $FONT_PRIMARY;
         font-weight: 100;
         color: #353b48;
@@ -44,7 +45,10 @@
 
     .wrapperMobile {
       width: 100%;
+      margin-top: -28px;
       max-width: 1000px;
+      background-color: #ffffff;
+      padding-bottom: 100px;
 
       .featuredImage {
         width: 100%;
@@ -56,6 +60,7 @@
       h1 {
         font-family: $FONT_PRIMARY;
         font-weight: 100;
+        font-size: 20px;
         color: #353b48;
         margin-bottom: 5px;
         &:first-letter {
@@ -194,11 +199,11 @@
 }
 
 .footer {
-  margin: 100px 20px;
+  margin: 50px 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
 
 @keyframes activate {

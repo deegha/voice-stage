@@ -178,7 +178,12 @@ export default class FeedsView extends React.PureComponent {
 
         </div>
         <div className={css.footer}>
-          {feeds.map(feed => <SmallFeedItem key={feed.id} feed={feed} ismobile={ismobile} />)}
+          {feeds.map((feed, i) => {
+
+            if(i< 9) {
+              return <SmallFeedItem key={feed.id} feed={feed} ismobile={ismobile} />
+            }
+          } )}
         </div>       
          <Modal visible={this.state.showLogin}>
           <div className={css.loginContainer}>
