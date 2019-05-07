@@ -3,7 +3,7 @@ import css from './styles.scss'
 import ReactPlayer from 'react-player'
 import IntersectionVisible    from 'react-intersection-visible'
 import Link from 'next/link'
-
+import moment from 'moment'
 export class SmallFeedItem extends React.PureComponent{
 
   state = {
@@ -64,6 +64,24 @@ export class SmallFeedItem extends React.PureComponent{
           </a>
         </Link>
         )}
+        </div>
+        <div className={css.auther}>
+                
+          by  
+          <h2>
+            <Link href={`/profile?slug=${feed.auther.id}`}>
+              <a>{feed.auther.displayName} </a>
+            </Link>
+          </h2> 
+          <Link href={`/profile?slug=${feed.auther.id}`}>
+            <a>
+            <img alt={"profile picture"} src={feed.auther.photoURL} className={css.proImage} /> 
+            </a>
+          </Link>
+          
+          <span className={css.sepereator}>|</span> 
+          {moment.unix(feed.createdAt).fromNow()}
+        
         </div>
       </div>
     )

@@ -3,7 +3,7 @@
 .container {
 
   width: 300px;
-  min-height: 250px;
+  min-height: 280px;
 
   background-color: #fff;
   margin: 5px;
@@ -39,5 +39,44 @@
       cursor: pointer;
       margin: 10px 0;
     }
+  }
+}
+
+.auther {
+  color: #a4b0be;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+  padding: 5px;
+  h2 {
+    margin: 0 5px;
+    color: #000;
+    padding: 0;
+    display: flex; 
+  }
+
+  a {
+    font-family: $FONT_PRIMARY;
+    font-size: 10px;
+    color: #000;
+    font-style: italic;
+  }
+
+  strong {
+    color: #2d3436;
+  }
+
+  .proImage {
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+    border-radius: 50%;
+    // box-shadow: 0 2px 16px 0 #00000033;
+    margin: 0 5px;
+  }
+
+  .sepereator {
+    margin: 0 10px 0 5px;
   }
 }
