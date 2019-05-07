@@ -188,8 +188,8 @@ export class CreateFeedForm extends React.Component {
     const { openText, textAreaHeight, maxCharactorLenght, title, text, selectedTags, media, showLogin,imageUloading }  = this.state
     const { window:{width} } = this.props
 
-    const hasContent = openText
-    const outerCls = hasContent ?[css.createFormOuter,css.boxBorder].join(' '): css.createFormOuter
+    const hasContent = (title.length > 0 || media.url !== '')
+    const outerCls = openText ?[css.createFormOuter,css.boxBorder].join(' '): css.createFormOuter
 
     const extraStyles = width < 900? {width: '100%'}:{}
     return (
