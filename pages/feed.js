@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import { getFeedById, createComment, getComments, replyComment } from '../services/backendClient'
 // import { sendEmailOnComment } from '../services/mailer'
 import FeedsView  from '../views/feedView/feedsView'
+import { getFeeds, createFeed, deleteFeed } from '../actions/feedsActions'
 
 class Feed extends React.Component {
 
@@ -22,6 +23,9 @@ class Feed extends React.Component {
   }
 
   async componentDidMount() {
+    if(this.props.feeds.feeds.length < 1) {
+      this.props.getFeeds()
+    }
     const comments = await getComments(this.props.slug)
     this.setState({comments})
   }
@@ -82,11 +86,12 @@ class Feed extends React.Component {
 
   render() {
 
-    const { feed, auth, slug, window } = this.props
+    const { feed, auth, slug, window, feeds } = this.props
     const { comments } = this.state
 
     return (
      <FeedsView 
+      feeds={feeds.feeds}
       window={window}
       comments={comments} 
       reply={this.reply} 
@@ -97,9 +102,14 @@ class Feed extends React.Component {
   }
 }
 
-const mapStateToProps = ({auth, window}) => ({
+const mapStateToProps = ({auth, window, feeds}) => ({
   auth,
-  window
+  window,
+  feeds
 })
 
-export default connect(mapStateToProps)(Feed)
+const mapDisptchToProps = (dispatch) => ({
+  getFeeds: () => dispatch(getFeeds()),
+})
+
+export default connect(mapStateToProps, mapDisptchToProps)(Feed)

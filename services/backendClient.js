@@ -18,6 +18,17 @@ const POST = async (path, data) => {
   return await result.json()
 }   
 
+const GET = async (path) => {
+  console.log('get', baseUrl+path)
+  const result = await fetch(path, {
+    method: "GET",
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+  return await result.json()
+}   
+
 const getRef = async (col) => {
 
   const firebase = await Fire()
@@ -260,3 +271,5 @@ export const getFeedById = (feedId) => POST('getFeedById', {"feedId": feedId})
 export const like = (data) => POST('likedFeeds', data)
 
 export const removeLike = (data) => POST('removeLike', data)
+
+export const getUserIp = () => GET('https://api.ipdata.co/1.1.1.1?api-key=b6ffed7311941a1632e419241557c1fd2caf28c75984ae661ae9a07f')

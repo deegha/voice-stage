@@ -85,7 +85,6 @@ export class CreateFeedForm extends React.Component {
       this.setState({imageUloading: true})
 
       const url = await uploadImage(file)
-      console.log(url, "url")
       this.setState({imageUloading: false})
       
       return url

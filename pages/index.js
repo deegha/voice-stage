@@ -8,7 +8,9 @@ import { signUp } from '../actions/authUserActions'
 class LandingPage extends React.Component {
 
   componentDidMount() {
-    this.props.getFeeds()
+    if(this.props.feeds.feeds.length < 1) {
+      this.props.getFeeds()
+    }
     this.props.loadComments()
   }
 

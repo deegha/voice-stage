@@ -1,4 +1,4 @@
-import { Header, FilterTab, CommentBox, Modal, GoogleBtn, FacebookBtn  } from '../../components'
+import { Header, FilterTab, CommentBox, Modal, GoogleBtn, FacebookBtn, SmallFeedItem  } from '../../components'
 import { APP_BASE_URL, APP_NAME, APP_LOG } from '../../config/config'
 import { makeid, uploadImage } from '../../services/helper'
 import moment from 'moment'
@@ -91,11 +91,16 @@ export default class FeedsView extends React.PureComponent {
   } 
 
   render() {
-    const { feed, auth, comments, reply, window:{width} } = this.props
+    const { feed, auth, comments, reply, window:{width}, feeds } = this.props
     const { commentText, textAreaHeight, media} = this.state
 
     const clWrapper = width<700?css.wrapperMobile:css.wrapper
+    const sideCls = width<700?css.sideMobile:css.side
     const clWriteComment = width<700?css.writeCommentMobile:css.writeComment
+    const ismobile=width<700
+    const styles = {
+      flexDirection: width<700?'column':'row'
+    }
 
     return (
       <div className={css.container}>
@@ -104,7 +109,7 @@ export default class FeedsView extends React.PureComponent {
           url={`${APP_BASE_URL}/feed?slug=${feed.id}`}
           description={`find more fun content on ${APP_NAME}`}
           title={feed.title !==''?`${feed.title} - ${APP_NAME}`:APP_NAME} />
-        <div className={css.containerInner}>
+        <div className={css.containerInner} style={styles} >
           <div className={clWrapper}>
             {feed.media && feed.media.url !== '' && feed.media.type == 1 && (
             <div className={css.featuredImage}>
@@ -167,8 +172,14 @@ export default class FeedsView extends React.PureComponent {
                                       comment={comment}/>)}
             
           </div>
-        </div>
+          <div className={sideCls}>
 
+          </div>
+
+        </div>
+        <div className={css.footer}>
+          {feeds.map(feed => <SmallFeedItem key={feed.id} feed={feed} ismobile={ismobile} />)}
+        </div>       
          <Modal visible={this.state.showLogin}>
           <div className={css.loginContainer}>
             <h3>Login in to continue</h3>

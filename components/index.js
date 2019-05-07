@@ -16,6 +16,7 @@ import { CommentBox } from './commentBox/commentBox'
 import LikeBtn  from './likeBtn/likeBtn'
 import { TopComments } from './topComments/topComments'
 import { CreateNotification } from './notificatoin/notificationsComponent'
+import { SmallFeedItem } from './smallFeedItem/smallFeedItem'
 
 export {
   Head,
@@ -31,5 +32,6 @@ export {
   CommentBox,
   LikeBtn,
   TopComments,
-  CreateNotification
+  CreateNotification,
+  SmallFeedItem
 }

@@ -5,7 +5,7 @@ export const APP_BASE_URL = 'http://www.statedee.com'
 
 export const CLOUDINARY_UPLOAD_PRESET = 'x8pebuvf'
 export const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/duqpgdc9v/upload'
-
+export const ipkey = ` b6ffed7311941a1632e419241557c1fd2caf28c75984ae661ae9a07f`
 
 export const POST_STATUS = {
   ACTIVE: 1,
