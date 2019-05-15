@@ -31,9 +31,22 @@
     }
   }
 
-  p {
-    font-family: $FONT_PRIMARY;
-    color: #000000;
+  div {
+    p {
+      font-family: $FONT_PRIMARY;
+      color: #000000 !important;
+      div {
+        color: #000000 !important;
+        font-weight:600;
+        font-size: 14px;
+        p {
+          font-family: $FONT_PRIMARY;
+          color: #000000 !important;
+          font-weight:600;
+        font-size: 14px;
+        }
+      }
+    }
   }
   
 }

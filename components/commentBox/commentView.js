@@ -104,7 +104,7 @@ export class CommentView extends React.Component {
 
     const styleViewCat =  comment.parent === null?{borderLeft:'none'}:{borderLeft:'1px solid #ced6e0', marginLeft: '2px'} 
 
-    const replyBoxWidth= width<700? '95%': '67%'
+    const replyBoxWidth= width<700? '95%': '100%'
     const Quill = this.quill
     return (
       <div className={css.commentView} style={styleViewCat}>
@@ -119,8 +119,10 @@ export class CommentView extends React.Component {
               {` | `} 
               {moment.unix(comment.createdAt).fromNow()}</div>         
           </div>     
+
           <p className={css.comment}>
           <div dangerouslySetInnerHTML={{__html: comment.comment}} /></p>
+
           {comment.media && comment.media.url !== '' && (
             <div className={css.commentImage}>
               <img src={comment.media.url} />

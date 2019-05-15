@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getFeeds, createFeed, deleteFeed } from '../actions/feedsActions'
+import { getFeeds, createFeedAction, deleteFeed } from '../actions/feedsActions'
 import { loadLatestComments } from '../actions/comentsActions'
 import  {LandingPageView}  from '../views/landingPageView/landingPageView'
 import { signUp } from '../actions/authUserActions'
@@ -33,7 +33,7 @@ class LandingPage extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
   getFeeds: () => dispatch(getFeeds()),
-  createFeed:(feed) => dispatch(createFeed(feed)),
+  createFeed:(feed) => dispatch(createFeedAction(feed)),
   signUp: (user, provider) => dispatch(signUp(user, provider)),
   loadComments: () => dispatch(loadLatestComments()),
   deleteFeed: (id) => dispatch(deleteFeed(id))

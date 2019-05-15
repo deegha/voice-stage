@@ -30,6 +30,14 @@ class Feed extends React.Component {
     this.setState({comments})
   }
 
+  async componentDidUpdate(pre) {
+
+    if(this.props.slug !== pre.slug) {
+      const comments = await getComments(this.props.slug)
+      this.setState({comments})
+    }
+  }
+
   sendEmailToParent(comments, perentId) {
     comments.map(comment => {
       if(comment.id === perentId) {
