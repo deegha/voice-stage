@@ -87,6 +87,20 @@
         align-items: center;
         margin-left: 10px;
       }
+
+      div {
+        padding: 10px;
+        p {
+          line-height: 24px;
+          letter-spacing: 1.2px;
+          color:  #696969;
+          font-family: $FONT_SECONDARY;
+        }
+
+        h1, h2, h3 {
+          color: #696969;
+        }
+      }
     }
 
   }

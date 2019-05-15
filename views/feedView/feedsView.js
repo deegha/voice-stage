@@ -1,6 +1,6 @@
 import { Header, FilterTab, CommentBox, Modal, GoogleBtn, FacebookBtn, SmallFeedItem  } from '../../components'
-import { APP_BASE_URL, APP_NAME, APP_LOG } from '../../config/config'
-import { makeid, uploadImage, APP_DESCRIPTION } from '../../services/helper'
+import { APP_BASE_URL, APP_NAME, APP_LOG, APP_DESCRIPTION } from '../../config/config'
+import { makeid, uploadImage } from '../../services/helper'
 import moment from 'moment'
 import { FiImage } from 'react-icons/fi'
 import css from './styles.scss'
