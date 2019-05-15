@@ -2,7 +2,6 @@
 
 .container {
   margin-bottom: 60px;
-  
   .containerInner {
     display: flex;
     justify-content: center;
@@ -29,7 +28,7 @@
         font-size: 28px;
         font-family: $FONT_PRIMARY;
         font-weight: 100;
-        color: #353b48;
+        color: #000;
         margin-bottom: 5px;
         &:first-letter {
           text-transform: uppercase;
@@ -46,8 +45,12 @@
         p {
           line-height: 24px;
           letter-spacing: 1.2px;
-          color: #636e72;
+          color:  #696969;
           font-family: $FONT_SECONDARY;
+        }
+
+        h1, h2, h3 {
+          color: #696969;
         }
       }
     }
