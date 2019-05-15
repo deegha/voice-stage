@@ -55,7 +55,7 @@ export const addFeedToState = (feed) => ({
   feed
 })
 
-export const createFeed = (feed) => async (dispatch) => {
+export const createFeedAction = (feed) => async (dispatch) => {
   dispatch(createFeedRequest())
   dispatch(addFeedToState(feed))
 

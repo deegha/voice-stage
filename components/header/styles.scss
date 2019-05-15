@@ -64,6 +64,9 @@
     }
   
     .headerRight {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
       padding: 20px 0;
       a {
         text-decoration: none;
@@ -71,7 +74,17 @@
     }
   }
   
-  
+  .createPost {
+    display: flex;
+    align-items: center;
+    a {
+      margin-right: 10px;
+      font-family: $FONT_PRIMARY;
+      color: $PRIMARY_COLOR;
+      text-decoration: none;
+    }
+    
+  }
 
   
 }

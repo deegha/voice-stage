@@ -58,6 +58,7 @@ export class Feed extends React.PureComponent {
     const isPostOwner = authUserId == feed.auther.id
     const menu = menuOpen? css.openMenu: css.closeMenu
 
+    const feedtext = feed.text.length > 100? `${feed.text.substring(0, 300)}...`:  feed.text
     return (
       <div className={css.container} key={feed.id} id={feed.id} >
        
@@ -143,10 +144,10 @@ export class Feed extends React.PureComponent {
                 )}
               </div>
             )}  
-            {feed.text !== '' && (
+            {feedtext !== '' && (
               <Link href={`feed?slug=${feed.id}`}>
                 <a>  
-                  <p className={css.feedText}>{feed.text}</p>
+                  <div dangerouslySetInnerHTML={{__html: feedtext}} />
                 </a>
               </Link>
             )}

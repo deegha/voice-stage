@@ -11,7 +11,7 @@ import propTypes from 'prop-types'
 import {APP_NAME, APP_LOG} from '../../config/config'
 import { Head, Nav } from '../'
 import {Fire} from '../../services/firebase'
-
+import { MdCreate } from 'react-icons/md'
 class Header extends React.PureComponent {
 
 
@@ -64,11 +64,11 @@ class Header extends React.PureComponent {
     return(
       <div>
         <Head 
-        rightBtn={rightBtn}
-        ogImage={ogImage}
-        url={url}
-        description={description}
-        title={title} />
+          rightBtn={rightBtn}
+          ogImage={ogImage}
+          url={url}
+          description={description}
+          title={title} />
         
         <div className={css.container}>
           <div className={css.wrapper}>
@@ -85,6 +85,18 @@ class Header extends React.PureComponent {
               </Link>
             </div>
             <div className={css.headerRight}>
+              <div className={css.createPost}>
+                <Link prefetch href="/create-feed">
+                  <a>
+                  <MdCreate style={{fontSize: 18}} />
+                  </a>
+                </Link>
+                <Link prefetch href="/create-feed">
+                  <a>
+                    Create a post
+                  </a>
+                </Link>
+              </div>
               <Nav isMobile={isMobile} auth={auth} signOut={this.signOut} />
               {this.props.rightBtn}
             </div>

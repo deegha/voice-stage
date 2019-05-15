@@ -37,7 +37,7 @@ export const feedsReducer = (state=initialState, action) => {
         creating: true,
        
       }
-    case Actions.ADD_FEED_TO_STATE:
+    case Actions.ADD_FEED_TO_STATE: console.log(state.feeds)
       return {
         ...state,
         feeds: [action.feed, ...state.feeds]

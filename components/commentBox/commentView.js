@@ -1,6 +1,7 @@
 import { FiImage } from 'react-icons/fi'
 import { CommentBox } from './commentBox'
 import { makeid, uploadImage } from '../../services/helper'
+import { MdCancel } from 'react-icons/md'
 import css from './styles.scss'
 import moment from 'moment'
 
@@ -19,12 +20,18 @@ export class CommentView extends React.Component {
     }
   } 
 
+  componentDidMount()  {
+    if (document) {
+      this.quill = require('react-quill')
+    }
+  }
+
   showlogin = () => {
     console.log('login')
   }
 
-  handleTitleChange = (e) => {
-    this.setState({commentText: e.target.value})
+  handleTitleChange = (value) => {
+    this.setState({commentText: value})
   }
 
   setReplyBox = () => {
@@ -81,6 +88,14 @@ export class CommentView extends React.Component {
     } 
   }
 
+  removeMedia = () => {
+    this.setState({media: {
+      url: '',
+      type: null,
+      file: ''
+    }})
+  }
+
   render () {
     const { comment, auth, reply, width } = this.props
     const { commentText, replyBox, media } = this.state
@@ -90,7 +105,7 @@ export class CommentView extends React.Component {
     const styleViewCat =  comment.parent === null?{borderLeft:'none'}:{borderLeft:'1px solid #ced6e0', marginLeft: '2px'} 
 
     const replyBoxWidth= width<700? '95%': '67%'
-
+    const Quill = this.quill
     return (
       <div className={css.commentView} style={styleViewCat}>
         <div>
@@ -104,7 +119,8 @@ export class CommentView extends React.Component {
               {` | `} 
               {moment.unix(comment.createdAt).fromNow()}</div>         
           </div>     
-          <p>{comment.comment}</p>
+          <p className={css.comment}>
+          <div dangerouslySetInnerHTML={{__html: comment.comment}} /></p>
           {comment.media && comment.media.url !== '' && (
             <div className={css.commentImage}>
               <img src={comment.media.url} />
@@ -114,6 +130,7 @@ export class CommentView extends React.Component {
            {media && media.url !== '' && (
             <div className={css.commentImage}>
               <img src={media.url} />
+              <MdCancel style={{color: '#e74c3c', fontSize: '20px', zIndex: '1'}} onClick={this.removeMedia} />
             </div>
           )}
           {!replyBox && (
@@ -125,19 +142,26 @@ export class CommentView extends React.Component {
         {replyBox && (
           <div className={writeCommentCls} style={{width:replyBoxWidth}}>
             <div className={css.textAreaWrapper}>
-              <textarea 
-                value={commentText}
+              <div className={css.editorWrapper}>
+              {Quill ? (
+                <Quill
+                placeholder={"how do you feel about it"}
+                className={css.editor}
                 onChange={this.handleTitleChange}
-                style={{height: 20}} 
-                placeholder={'how do you feel about it'} />
-    
-              <div className={css.optionsArea}>
-                <input type="file" onChange={this.handleFileChange} />
-                <FiImage style={{color: '#636e72', fontSize: '26px'}} />
+                value={commentText} />
+                  ):(<div />)}
               </div>
+    
+           
             </div>
-
-            <div className={css.replyBtn} onClick={this.reply}>reply</div>
+            <div className={css.optionsArea}>
+              <div  className={css.imageUpload}>
+                <input type="file" onChange={this.handleFileChange} />
+                <FiImage style={{color: '#636e72', fontSize: '25px'}} />
+              </div>
+              <div className={css.replyBtn} onClick={this.reply}>reply</div>
+            </div>
+          
           </div>
         )}
        

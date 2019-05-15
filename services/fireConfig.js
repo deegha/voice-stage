@@ -3,8 +3,8 @@
 export const sc = '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'
 
 
-const isProduction = process.env.NODE_ENV === 'production'
-
+// const isProduction = process.env.NODE_ENV === 'production'
+const isProduction = true
 let fconfig = {}
 if(isProduction) {
   fconfig = {

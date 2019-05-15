@@ -33,6 +33,7 @@
 
   p {
     font-family: $FONT_PRIMARY;
+    color: #000000;
   }
   
 }
@@ -42,67 +43,81 @@
 }
 
 .writeComment {
-  margin: 40px 0;
-  width: 67%;
+  border: 1px solid #f1f2f6;
+}
+
+.optionsArea {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   .replyBtn {
+    width: 90px;
     animation: activate .6s ease-out ;
-    background-color: #ED4C67;
+    background-color: #34495e;;
     color: #fff;
     font-weight: 800;
     font-size: 12px;
-    padding: 10px;
-    border-radius: 2px;
+    padding: 5px;
+    border-radius: 5px;
     font-family: $FONT_PRIMARY; 
     letter-spacing: 1px;
     cursor: pointer;
     margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  background-color: #f1f2f6;
-  padding: 10px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  
-  .textAreaWrapper {
-    border-radius: 10px;
-    padding: 5px 10px;
-    width: 79%;
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 
-    .optionsArea {
-      width: 10%;
-      display: flex;
-      align-items: center;
-      input {
-        position: relative;
-        top: -5px;
-        left: -48px;
-        right: 54px;
-        width: 33px;
-        opacity: 0;
-        width:4%;
-      }
+  .imageUpload {
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+
+    input {
+      font-size: 100px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      opacity: 0;
     }
-    
-    textarea {
-      width: 90%;
-      border: none;
-      font-size: 12px;
-      font-family: $FONT_PRIMARY;
-      resize: none;
-      overflow: hidden;
-      &:focus {
-        outline: none;
+  }
+  
+}
+
+
+.editorWrapper {
+  // box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.08);
+  min-height: 100px;
+  width: 100%;
+  background-color: #f1f2f6;
+
+  .editor {
+    border-radius: 5px;
+    background-color: #fff;
+    min-height: 100px;
+    border: none;
+
+    div {
+      border: none; 
       
+    }
+
+    div:nth-child(2) {
+      min-height: 100px;
+      font-family: $FONT_SECONDARY;
+      
+
+      p {
+        color: #000000;
       }
     }
   }
 }
-
 
 .commentImage {
   width: 200px;

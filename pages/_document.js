@@ -33,6 +33,7 @@ export default class MyDocument extends Document {
         
         <Head>
           <link rel="stylesheet" href="/_next/static/style.css" />
+          <link rel="stylesheet" href="//cdn.quilljs.com/1.2.6/quill.snow.css"></link>
         </Head>
         <body>
           <Main />

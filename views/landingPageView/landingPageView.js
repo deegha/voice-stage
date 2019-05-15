@@ -46,12 +46,14 @@ export class LandingPageView extends React.Component {
           url={APP_BASE_URL}
           description={APP_DESCRIPTION} />
         <div className={css.wrapper}>
-          <CreateFeedForm 
+          {/* <CreateFeedForm 
             openLoginModal={this.openLoginModal}
             window={window}
             signUp={signUp} 
             auth={auth} 
-            createFeed={createFeed}/>
+            createFeed={createFeed}/> */}
+
+          
           <div className={ics}>
             <div className={css.wrapperInner}>
               {feeds.map(feed => <Feed openLoginModal={this.openLoginModal} deleteFeed={deleteFeed} authUserId={auth.user.id} auth={auth} key={feed.id} feed={feed} />)}

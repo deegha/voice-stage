@@ -2,7 +2,6 @@ import React from 'react'
 import Link from 'next/link'
 import css from './styles.scss'
 
-
 class Nav extends React.PureComponent {
 
   state = {
@@ -85,7 +84,9 @@ class Nav extends React.PureComponent {
               <div className={css.menuDot} />
            </div>
             )}
+          
         </div>
+       
         <div className={[clsMMenu, menu].join(' ')}>
           <div className={css.menuItems}>
           {this.renderMenuItems(auth)}
