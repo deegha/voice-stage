@@ -141,7 +141,7 @@ export default class FeedsView extends React.PureComponent {
             )}
             <h1>{feed.title}</h1>
             {feed.text !== '' && (
-                <div dangerouslySetInnerHTML={{__html: feed.text}} />
+              <div className={css.feedText} dangerouslySetInnerHTML={{__html: feed.text}} />
             )}
           
             { feed.tags && feed.tags.length > 0 && (
