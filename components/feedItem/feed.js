@@ -144,14 +144,15 @@ export class Feed extends React.PureComponent {
                 )}
               </div>
             )}  
+            <div className={css.shotDes}>
             {feedtext !== '' && (
               <Link href={`feed?slug=${feed.id}`}>
-                <a>  
+                <a style={{textDecoration: 'none'}}>  
                   <div dangerouslySetInnerHTML={{__html: feedtext}} />
                 </a>
               </Link>
             )}
-            
+            </div>
             <div className={css.iconArea}>
              
               <div className={css.icon}>

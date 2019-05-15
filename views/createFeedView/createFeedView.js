@@ -59,7 +59,7 @@ export class CreateFeedForm extends React.Component {
 
   handleTitleChange = (e) => { 
  
-    if(e.target.value.length > 100) {
+    if(e.target.value.length > 200) {
       this.setState({maxCharactorLenght: true})
     }else {
       this.setState({title: e.target.value, maxCharactorLenght: false})

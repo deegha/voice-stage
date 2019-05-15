@@ -10,6 +10,9 @@
   width: 100%;
   animation: activate 1.2s ease;
 
+  a {
+    text-decoration: none;
+  }
 
   .containerMedia {
 
@@ -254,6 +257,14 @@
   position: relative;
   left: 46%;
   cursor: pointer;
+}
+
+.shotDes {
+  a {
+    text-decoration: none;
+
+    color: inherit;
+  }
 }
 
 @keyframes activate {
