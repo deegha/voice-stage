@@ -77,6 +77,8 @@
   .createPost {
     display: flex;
     align-items: center;
+    z-index: 2;
+    
     a {
       margin-right: 10px;
       font-family: $FONT_PRIMARY;

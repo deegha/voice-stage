@@ -110,18 +110,17 @@ class Header extends React.PureComponent {
               )}
            
               <div className={css.createPost}>
+                {/* <Link prefetch href="/create-feed">
+                  <a>
+                    <MdCreate style={{fontSize: 18}} />
+                  </a>
+                </Link> */}
+                
                 <Link prefetch href="/create-feed">
                   <a>
                     <MdCreate style={{fontSize: 18}} />
                   </a>
                 </Link>
-                {/* <Link prefetch href="/create-feed">
-                  <a>
-                  <Tooltip content="Create posts">
-                    Create a post
-                   </Tooltip>
-                  </a>
-                </Link> */}
               </div>
               <Nav isMobile={isMobile} auth={auth} signOut={this.signOut} />
               {this.props.rightBtn}
