@@ -97,7 +97,7 @@ export const checkUserExcists = async(email) => {
 
   const userRef = await getRef('users')
   const user = await userRef.where('email', '==', email).get()
-
+  
   let response = []
 
   user.forEach(doc => {
@@ -106,7 +106,7 @@ export const checkUserExcists = async(email) => {
       id: doc.id
     }]
   })
-
+  console.log(response)
   return response.length > 0 ? response[0] : false
 }
 

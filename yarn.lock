@@ -6436,6 +6436,13 @@ react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.2:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
   integrity sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
 
+react-minimalist-portal@^2.2.0:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/react-minimalist-portal/-/react-minimalist-portal-2.3.1.tgz#4853e3f48a74a32c1b8767601887cdf7941eeba3"
+  integrity sha1-SFPj9Ip0oywbh2dgGIfN95Qe66M=
+  dependencies:
+    prop-types "^15.6.1"
+
 react-native-link-preview@^1.4.2:
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/react-native-link-preview/-/react-native-link-preview-1.4.2.tgz#de6839095f3c6df0e7902b330d28579713672da7"
@@ -6506,6 +6513,14 @@ react-social-sharing@^3.0.1:
   dependencies:
     styled-components "^4.1.1"
     styled-is "^1.1.5"
+
+react-tooltip-lite@^1.9.1:
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/react-tooltip-lite/-/react-tooltip-lite-1.9.1.tgz#3f6934b51d0efc75e7a9ade97e7e58d0f9db4ea1"
+  integrity sha512-JH5T6kPZn7X90TnnNhuJ+wOb1eikT2xtpbOkndvqAHZlOyZOAZeAyVgk/3pGz0xi4h+bqXXisfwGtriliTYhDQ==
+  dependencies:
+    prop-types "^15.5.8"
+    react-minimalist-portal "^2.2.0"
 
 react-transition-group@^1.2.0:
   version "1.2.1"

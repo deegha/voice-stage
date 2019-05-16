@@ -39,6 +39,24 @@
       cursor: pointer;
       margin: 10px 0;
     }
+
+    .feedText {
+      color: #696969;
+      h1 {
+        font-size: 18px;
+      }
+      h2 {
+        font-size: 16px;
+      }
+      h3 {
+        font-size: 15px;
+      }
+      p {
+        font-size: 13px;
+        line-height: 23px;
+        letter-spacing: 1.2px;
+      }
+    }
   }
 }
 

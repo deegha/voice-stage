@@ -104,7 +104,7 @@ export class CommentView extends React.Component {
 
     const styleViewCat =  comment.parent === null?{borderLeft:'none'}:{borderLeft:'1px solid #ced6e0', marginLeft: '2px'} 
 
-    const replyBoxWidth= width<700? '95%': '100%'
+    const replyBoxWidth= width<700? '90%': '100%'
     const Quill = this.quill
     return (
       <div className={css.commentView} style={styleViewCat}>

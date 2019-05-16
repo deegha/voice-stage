@@ -20,7 +20,7 @@ export class SmallFeedItem extends React.PureComponent{
     const styles = {
       width: ismobile?'100%':'300px'
     }
-
+    const feedtext = feed.text.length > 100? `${feed.text.substring(0, 200)}...`:  feed.text
     return (
       <div className={css.container} style={styles}>
         <div className={css.imageArea}>
@@ -64,6 +64,10 @@ export class SmallFeedItem extends React.PureComponent{
           </a>
         </Link>
         )}
+
+          {feed.text !== '' && (
+            <div className={css.feedText} dangerouslySetInnerHTML={{__html: feedtext}} />
+          )}
         </div>
         <div className={css.auther}>
                 

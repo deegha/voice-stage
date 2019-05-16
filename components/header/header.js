@@ -11,12 +11,20 @@ import propTypes from 'prop-types'
 import {APP_NAME, APP_LOG} from '../../config/config'
 import { Head, Nav } from '../'
 import {Fire} from '../../services/firebase'
-import { MdCreate } from 'react-icons/md'
+import { MdCreate, MdPlayArrow } from 'react-icons/md'
+import Tooltip from 'react-tooltip-lite'
 class Header extends React.PureComponent {
 
+  state={
+    isOpen: false
+  }
 
-  componentDidMount() {
-    
+  componentDidMount() { 
+   
+    if(this.props.tooltip) {
+      setTimeout( this.openToolTip, 500)
+    }
+
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
 
@@ -37,8 +45,11 @@ class Header extends React.PureComponent {
         }
       })
     })
-    
   }
+
+  openToolTip = () => {
+    this.setState({isOpen: true})
+  } 
   
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateWindowDimensions)
@@ -60,7 +71,7 @@ class Header extends React.PureComponent {
 
     const { auth, title, description, url, ogImage, rightBtn, window:{isMobile} } = this.props
     const clsLogo = isMobile? css.logoMobile :css.logo
-    
+    const { isOpen } = this.state
     return(
       <div>
         <Head 
@@ -85,17 +96,32 @@ class Header extends React.PureComponent {
               </Link>
             </div>
             <div className={css.headerRight}>
+              {isOpen && (
+                <div className={css.createPostLable}>
+                  <div className={css.createPostLableTxt}>
+                    Click here to create a post
+                  </div>
+                  
+                  <MdPlayArrow style={{
+                      position:'relative',
+                      left: '-13px',
+                      fontSize: 40, color: '#f9ca24'}} />
+                </div>
+              )}
+           
               <div className={css.createPost}>
                 <Link prefetch href="/create-feed">
                   <a>
-                  <MdCreate style={{fontSize: 18}} />
+                    <MdCreate style={{fontSize: 18}} />
                   </a>
                 </Link>
-                <Link prefetch href="/create-feed">
+                {/* <Link prefetch href="/create-feed">
                   <a>
+                  <Tooltip content="Create posts">
                     Create a post
+                   </Tooltip>
                   </a>
-                </Link>
+                </Link> */}
               </div>
               <Nav isMobile={isMobile} auth={auth} signOut={this.signOut} />
               {this.props.rightBtn}
@@ -113,7 +139,8 @@ Header.propTypes = {
   description: propTypes.string,
   url: propTypes.string,
   ogImage: propTypes.string,
-  rightBtn: propTypes.any
+  rightBtn: propTypes.any,
+  tooltip: propTypes.bool
 }
 
 const mapStateToProps = ({window, auth}) => ({

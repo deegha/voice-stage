@@ -5,7 +5,7 @@ import moment from 'moment'
 import { FiImage } from 'react-icons/fi'
 import css from './styles.scss'
 import { MdCancel } from 'react-icons/md'
-
+import Link from 'next/link'
 import ReactPlayer from 'react-player'
 import IntersectionVisible    from 'react-intersection-visible'
 
@@ -119,12 +119,31 @@ export default class FeedsView extends React.PureComponent {
     return (
       <div className={css.container}>
         <Header 
+          tooltip={true}
           ogImage={feed.media && feed.media.url !== '' ? feed.media.url:APP_LOG}
           url={`${APP_BASE_URL}/feed?slug=${feed.id}`}
           description={`${APP_DESCRIPTION}`}
           title={feed.title !==''?`${feed.title} - ${APP_NAME}`:APP_NAME} />
         <div className={css.containerInner} style={styles} >
+         
           <div className={clWrapper}>
+            <div className={css.auther}>
+              by  
+              <h2>
+                <Link href={`/profile?slug=${feed.auther.id}`}>
+                  <a>{feed.auther.displayName} </a>
+                </Link>
+              </h2> 
+              <Link href={`/profile?slug=${feed.auther.id}`}>
+                <a>
+                <img alt={"profile picture"} src={feed.auther.photoURL} className={css.proImage} /> 
+                </a>
+              </Link>
+              
+              <span className={css.sepereator}>|</span> 
+              {moment.unix(feed.createdAt).fromNow()}
+            
+            </div>
             {feed.media && feed.media.url !== '' && feed.media.type == 1 && (
             <div className={css.featuredImage}>
               <img src={feed.media.url} />
@@ -161,7 +180,17 @@ export default class FeedsView extends React.PureComponent {
                 <MdCancel style={{color: '#e74c3c', fontSize: '20px', zIndex: '1'}} onClick={this.removeMedia} />
               </div>
             )}
+
+            
+
             <div className={clWriteComment}>
+              <div className={css.commentAs}>
+                <p>Comment as {auth.user.displayName}</p>
+                <div className={css.img}>
+                  <img src={auth.user.photoURL} />
+                </div>
+                
+              </div>
               <div className={css.editorWrapper}>
               {Quill ? (
                 <Quill

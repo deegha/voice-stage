@@ -41,6 +41,7 @@ export class LandingPageView extends React.Component {
     return (
       <div className={css.container}>
         <Header
+        tooltip={true}
           title={APP_NAME}
           ogImage={APP_LOG}
           url={APP_BASE_URL}
